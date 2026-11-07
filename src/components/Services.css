@@ -12,7 +12,12 @@
 }
 
 .headline__accent {
-  color: var(--primary-main);
+  background: linear-gradient(135deg, #0019ff 0%, #4a5cff 50%, #0019ff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineAccent 5s linear infinite;
+  display: inline-block;
 }
 
 /* ---------- Services list ---------- */
@@ -26,6 +31,7 @@
   overflow: hidden;
   box-shadow: -1px 0 0 var(--white);
   border-radius: 56px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .service-row {

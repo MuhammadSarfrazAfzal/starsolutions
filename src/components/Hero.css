@@ -104,7 +104,7 @@
   box-shadow: 0 6px 18px rgba(0, 25, 255, 0.15);
 }
 
-/* Mobile Menu Elements (Hidden on Desktop) */
+/* Mobile Menu Elements */
 .header__menu-btn {
   display: none;
   flex-direction: column;
@@ -155,18 +155,6 @@
   align-items: flex-start;
   gap: 48px;
   padding: 120px 120px 160px;
-  animation: heroFadeIn 0.8s ease-out;
-}
-
-@keyframes heroFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .hero__heading {
@@ -182,10 +170,18 @@
 }
 
 .hero__accent {
-  color: var(--primary-main);
-  background: linear-gradient(135deg, #0019ff 0%, #4a5cff 100%);
+  background: linear-gradient(135deg, #0019ff 0%, #4a5cff 50%, #0019ff 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: shineAccent 5s linear infinite;
+  display: inline-block;
+}
+
+@keyframes shineAccent {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .hero__sub {
@@ -202,19 +198,7 @@
   max-width: none;
   pointer-events: none;
   z-index: 2;
-  animation: floatHeroCrystal 8s ease-in-out infinite;
-}
-
-@keyframes floatHeroCrystal {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-18px) rotate(1deg);
-  }
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
+  filter: drop-shadow(0 20px 50px rgba(0, 25, 255, 0.12));
 }
 
 /* ---------- Mobile & Tablet Breakpoints ---------- */
