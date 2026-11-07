@@ -1,0 +1,129 @@
+/* ---------- "What we can do for you?" headline ---------- */
+.headline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.headline h2 {
+  color: var(--blue-gray-400);
+  white-space: nowrap;
+}
+
+.headline__accent {
+  color: var(--primary-main);
+}
+
+/* ---------- Services list ---------- */
+.services {
+  padding: 0 24px;
+}
+
+.services__panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Figma: 1px left stroke drawn outside the panel */
+  box-shadow: -1px 0 0 var(--white);
+  border-radius: 56px;
+}
+
+.service-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+  padding: 56px 80px;
+  background: var(--blue-gray-900);
+  box-shadow: inset 0 -1px 0 var(--white);
+  color: var(--white);
+}
+
+.service-row:nth-child(4) {
+  box-shadow: none;
+}
+
+.service-row__icon {
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.service-row:hover .service-row__icon {
+  transform: rotate(-90deg);
+}
+
+.service-row__content {
+  flex: 1 0 0;
+  min-width: 1px;
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+.service-row__title,
+.service-row__body {
+  flex: 1 0 0;
+  min-width: 1px;
+}
+
+.services__cta {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  padding: 40px 80px 40px 184px;
+  background: var(--primary-main);
+  filter: drop-shadow(20px 20px 20px rgba(112, 129, 136, 0.2));
+  color: var(--white);
+}
+
+.services__cta-title {
+  flex: 1 0 0;
+  min-width: 1px;
+}
+
+.services__cta-actions {
+  flex: 1 0 0;
+  min-width: 1px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.services__worth {
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+  font-size: 16px;
+  line-height: normal;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+@media (max-width: 1100px) {
+  .headline h2 {
+    font-size: 40px;
+    white-space: normal;
+    text-align: center;
+  }
+  .service-row,
+  .services__cta {
+    padding: 40px 32px;
+    gap: 24px;
+  }
+  .service-row__content,
+  .services__cta {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .service-row__title,
+  .services__cta-title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  .services__cta-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

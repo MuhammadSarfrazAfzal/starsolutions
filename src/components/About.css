@@ -1,0 +1,81 @@
+.about {
+  background: var(--blue-gray-900);
+}
+
+.about__inner {
+  position: relative;
+  /* two equal columns; padding stays inside each column like Figma auto-layout */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 80px;
+  padding: 120px;
+  background: var(--blue-gray-50);
+  border-radius: 0 0 56px 56px;
+}
+
+.about__title {
+  flex: 1 0 0;
+  min-width: 1px;
+  display: flex;
+  flex-direction: column;
+  color: var(--blue-gray-900);
+}
+
+.about__title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 204px;
+}
+
+.about__title h2 {
+  white-space: nowrap;
+}
+
+.about__text {
+  flex: 1 0 0;
+  min-width: 1px;
+  display: flex;
+  align-items: flex-end;
+  padding: 190px 0 0 52px;
+  color: var(--blue-gray-500);
+}
+
+.about__text-strong {
+  color: var(--blue-gray-900);
+}
+
+.about__crystal {
+  position: absolute;
+  left: 95px;
+  top: 158px;
+  width: 620px;
+  height: 549px;
+  max-width: none;
+  pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+  .about__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding: 96px 24px 280px;
+  }
+  .about__title-row {
+    gap: 48px;
+  }
+  .about__title h2 {
+    font-size: 48px;
+  }
+  .about__text {
+    padding: 0;
+  }
+  .about__crystal {
+    left: 50%;
+    top: auto;
+    bottom: -60px;
+    width: 420px;
+    height: auto;
+    transform: translateX(-50%);
+  }
+}
