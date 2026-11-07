@@ -9,12 +9,14 @@ import Footer from './components/Footer'
 import { ScrollProgressBar, FloatingWhatsApp } from './components/InteractiveWidgets'
 import { InteractiveStarfield } from './components/InteractiveStarfield'
 import { CursorGlow } from './components/CursorGlow'
+import { ClickRipple } from './components/ClickRipple'
 
 export default function App() {
   return (
     <div className="page">
       <InteractiveStarfield />
       <CursorGlow />
+      <ClickRipple />
       <ScrollProgressBar />
       <Hero />
       <main>

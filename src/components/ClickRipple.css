@@ -1,0 +1,29 @@
+.click-ripple-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.click-ripple {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 25, 255, 0.45);
+  box-shadow: 0 0 16px rgba(74, 92, 255, 0.35);
+  transform: translate(-50%, -50%) scale(0);
+  animation: rippleSpread 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes rippleSpread {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(12);
+    opacity: 0;
+  }
+}
