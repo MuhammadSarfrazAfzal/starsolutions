@@ -10,6 +10,7 @@ import { ScrollProgressBar, FloatingWhatsApp } from './components/InteractiveWid
 import { InteractiveStarfield } from './components/InteractiveStarfield'
 import { CursorGlow } from './components/CursorGlow'
 import { ClickRipple } from './components/ClickRipple'
+import { MobileBottomDock } from './components/MobileBottomDock'
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
       </main>
       <Footer />
       <FloatingWhatsApp />
+      <MobileBottomDock />
     </div>
   )
 }

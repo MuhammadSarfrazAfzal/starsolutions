@@ -1,0 +1,70 @@
+/* Mobile Quick-Action Bottom Floating Dock */
+.mobile-bottom-dock {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-dock {
+    display: block;
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    z-index: 998;
+    pointer-events: none;
+  }
+
+  .mobile-bottom-dock__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 12px;
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 40px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    pointer-events: auto;
+  }
+
+  .mobile-dock-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-dock-btn__icon {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .mobile-dock-btn__label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .mobile-dock-btn--whatsapp {
+    background: #25d366;
+    color: #ffffff !important;
+    padding: 8px 18px;
+    border-radius: 24px;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+  }
+
+  .mobile-dock-btn--whatsapp .mobile-dock-btn__label {
+    color: #ffffff;
+  }
+}
