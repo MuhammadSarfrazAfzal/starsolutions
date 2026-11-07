@@ -1,21 +1,27 @@
 .problems {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 48px;
-  padding: 80px 48px;
+  gap: 40px;
+  padding: 80px 40px;
+  background: var(--blue-gray-50);
 }
 
 .problems__title {
   color: var(--blue-gray-900);
   text-align: center;
+  width: 100%;
+  max-width: var(--page-width);
 }
 
 .problems__grid {
   display: flex;
   align-items: stretch;
-  gap: 8px;
+  gap: 16px;
   width: 100%;
+  max-width: var(--page-width);
+  margin: 0 auto;
 }
 
 .problem-card {
