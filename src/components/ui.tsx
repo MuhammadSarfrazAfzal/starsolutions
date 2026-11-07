@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import confetti from 'canvas-confetti'
 import emailIcon from '../assets/icons/email.svg'
 import arrowUpRightDark from '../assets/icons/arrow-up-right-dark.svg'
 import './ui.css'
@@ -18,6 +19,12 @@ export function EmailForm({ fluid = false, className = '' }: EmailFormProps) {
     e.preventDefault()
     if (!email) return
     setSent(true)
+    confetti({
+      particleCount: 70,
+      spread: 70,
+      origin: { y: 0.7 },
+      colors: ['#0019ff', '#4a5cff', '#25d366', '#ffffff'],
+    })
   }
 
   return (
@@ -29,7 +36,7 @@ export function EmailForm({ fluid = false, className = '' }: EmailFormProps) {
         <input
           className="text-field__input t-body-xs"
           type="email"
-          placeholder={sent ? 'Thanks! We’ll be in touch.' : 'Enter your email to get started'}
+          placeholder={sent ? '✓ Inquiry Sent! We will contact you soon.' : 'Enter your email to get started'}
           value={email}
           onChange={(e) => {
             setEmail(e.target.value)
@@ -40,7 +47,7 @@ export function EmailForm({ fluid = false, className = '' }: EmailFormProps) {
         />
       </label>
       <button type="submit" className="cta-pill">
-        <span className="t-btn-l">Get Started</span>
+        <span className="t-btn-l">{sent ? 'Sent!' : 'Get Started'}</span>
         <span className="cta-pill__arrow">
           <img src={arrowUpRightDark} alt="" width={20} height={20} />
         </span>

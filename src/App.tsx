@@ -6,10 +6,12 @@ import Testimonials from './components/Testimonials'
 import Faq from './components/Faq'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import { ScrollProgressBar, FloatingWhatsApp } from './components/InteractiveWidgets'
 
 export default function App() {
   return (
     <div className="page">
+      <ScrollProgressBar />
       <Hero />
       <main>
         <Problems />
@@ -20,6 +22,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </div>
   )
 }

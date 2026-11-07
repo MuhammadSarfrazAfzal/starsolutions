@@ -13,10 +13,13 @@
     "@fontsource/montserrat": "^5.3.0",
     "@fontsource/poppins": "^5.3.0",
     "@fontsource/unbounded": "^5.3.0",
+    "canvas-confetti": "^1.9.4",
+    "motion": "^14.10.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^24.19.2",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
