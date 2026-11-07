@@ -21,8 +21,8 @@
   --font-accent: 'Angry', 'Unbounded', sans-serif;
   --font-body: 'Montserrat', sans-serif;
 
-  /* Calibrated from 1440px to 1300px for comfortable 90%-style view on 100% desktop zoom */
-  --page-width: 1300px;
+  /* Content container width calibrated for comfortable reading & alignment */
+  --page-width: 1320px;
 }
 
 *,
@@ -84,10 +84,18 @@ img {
 
 .page {
   width: 100%;
-  max-width: var(--page-width);
-  margin: 0 auto;
+  min-height: 100vh;
+  margin: 0;
   position: relative;
   overflow-x: hidden;
+  background: var(--blue-gray-50);
+}
+
+/* Full-width responsive centered container */
+.container {
+  width: 100%;
+  max-width: var(--page-width);
+  margin: 0 auto;
 }
 
 /* Typography calibrated to 90% scale */
