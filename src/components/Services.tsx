@@ -5,20 +5,20 @@ import './Services.css'
 
 const SERVICES = [
   {
-    title: 'Customized Strategy Development',
-    body: 'Tailor-made strategies to address your unique business challenges and opportunities, ensuring sustainable growth and competitive advantage.',
+    title: 'Enterprise POS Systems',
+    body: 'Specialized Point of Sale solutions engineered for split-second checkouts, multi-store inventory synchronization, hardware integrations, and automated real-time financial reporting.',
   },
   {
-    title: 'Operational Efficiency Optimization',
-    body: 'Streamline your processes and improve efficiency with our expert guidance, helping you save time and resources.',
+    title: 'Custom App Development',
+    body: 'High-performance native and cross-platform mobile apps for iOS and Android, crafted to automate operations, manage retail tasks, and create seamless customer shopping experiences.',
   },
   {
-    title: 'Market Analysis and Insights',
-    body: 'Gain valuable market insights and stay ahead of the competition with our comprehensive analysis and data-driven recommendations.',
+    title: 'Modern Web Development',
+    body: 'Bespoke web applications, high-converting e-commerce storefronts, and cloud software systems built for enterprise reliability, blazing speed, and frictionless user flows.',
   },
   {
-    title: 'Leadership and Team Building',
-    body: 'Enhance your leadership capabilities and foster a high-performing team through our specialized training and development programs.',
+    title: 'Marketing & Retail Solutions',
+    body: 'Comprehensive digital marketing, SEO, and foot-traffic strategies — refined and proven through 15 years running our own physical iPhone retail stores across America.',
   },
 ]
 
@@ -46,7 +46,7 @@ export default function Services() {
           <div className="services__cta">
             <p className="t-h2 services__cta-title">Free consultation</p>
             <div className="services__cta-actions">
-              <OutlineButton href="#contact" tone="light" icon={arrowUpRightLight}>
+              <OutlineButton href="https://wa.me/923342221063" tone="light" icon={arrowUpRightLight}>
                 Schedule a free call
               </OutlineButton>
               <span className="services__worth">worth 200 USD</span>
