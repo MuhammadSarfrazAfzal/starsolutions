@@ -10,6 +10,14 @@
   width: 100%;
 }
 
+.magnetic-wrapper {
+  display: inline-flex;
+}
+
+.outline-btn-magnetic {
+  display: inline-flex;
+}
+
 .text-field {
   display: flex;
   align-items: center;
@@ -131,6 +139,11 @@
     gap: 12px;
   }
 
+  .magnetic-wrapper,
+  .outline-btn-magnetic {
+    width: 100%;
+  }
+
   .text-field {
     width: 100%;
     max-width: 100%;
@@ -146,6 +159,7 @@
   }
 
   .outline-btn {
+    width: 100%;
     height: 48px;
     padding: 12px 20px;
   }
