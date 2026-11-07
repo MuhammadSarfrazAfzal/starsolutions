@@ -347,17 +347,6 @@
     box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
   }
 
-  .header__mobile-call {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 20px;
-    border-radius: 30px;
-    border: 1px solid var(--primary-main);
-    color: var(--primary-main);
-    font-weight: 700;
-  }
-
   .header__mobile-location {
     font-size: 12px;
     color: var(--blue-gray-600);
@@ -372,7 +361,7 @@
   }
 
   .hero__content {
-    padding: 48px 20px 64px;
+    padding: 48px 20px 32px;
     gap: 32px;
     max-width: 100%;
   }
@@ -382,9 +371,9 @@
     right: auto;
     left: auto;
     width: 60%;
-    max-width: 360px;
-    margin: 0 auto -40px;
-    opacity: 0.9;
+    max-width: 320px;
+    margin: 0 auto 10px;
+    opacity: 0.95;
   }
 }
 
@@ -396,16 +385,17 @@
   .hero {
     min-height: auto;
     border-radius: 0 0 36px 36px;
+    overflow: hidden;
   }
 
   .hero__content {
-    padding: 36px 16px 48px;
+    padding: 36px 16px 24px;
     gap: 24px;
   }
 
   .hero__crystal {
-    width: 75%;
-    max-width: 300px;
-    margin: -10px auto -20px;
+    width: 65%;
+    max-width: 260px;
+    margin: 0 auto 10px;
   }
 }
