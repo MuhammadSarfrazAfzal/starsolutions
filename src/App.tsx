@@ -8,11 +8,13 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import { ScrollProgressBar, FloatingWhatsApp } from './components/InteractiveWidgets'
 import { InteractiveStarfield } from './components/InteractiveStarfield'
+import { CursorGlow } from './components/CursorGlow'
 
 export default function App() {
   return (
     <div className="page">
       <InteractiveStarfield />
+      <CursorGlow />
       <ScrollProgressBar />
       <Hero />
       <main>
