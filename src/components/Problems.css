@@ -19,6 +19,7 @@
 }
 
 .problem-card {
+  position: relative;
   flex: 1 0 0;
   min-width: 1px;
   display: flex;
@@ -26,19 +27,28 @@
   align-items: flex-start;
   gap: 16px;
   padding: 40px;
-  /* Figma inside stroke: does not add to the box size */
+  /* Figma inside stroke */
   box-shadow: inset 0 0 0 1px var(--blue-gray-500);
   border-radius: 40px;
   background: var(--white);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  overflow: hidden;
+  cursor: default;
 }
 
 .problem-card:hover {
-  transform: translateY(-6px);
-  box-shadow: inset 0 0 0 2px var(--primary-main), 0 16px 36px rgba(0, 25, 255, 0.08);
+  box-shadow: inset 0 0 0 2px var(--primary-main), 0 20px 40px rgba(0, 25, 255, 0.1);
+}
+
+.problem-card__spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .problem-card__num {
+  position: relative;
+  z-index: 2;
   width: 40px;
   font-family: var(--font-accent);
   font-size: 20px;
@@ -52,10 +62,14 @@
 }
 
 .problem-card__title {
+  position: relative;
+  z-index: 2;
   color: var(--blue-gray-800);
 }
 
 .problem-card__body {
+  position: relative;
+  z-index: 2;
   color: var(--blue-gray-600);
 }
 
