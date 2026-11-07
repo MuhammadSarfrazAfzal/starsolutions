@@ -97,15 +97,29 @@
   transform: translateY(-1px);
 }
 
-.header__phone {
-  width: 190px;
+.header__whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 40px;
+  background: #25d366;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.06px;
   white-space: nowrap;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
-.header__phone:hover {
+.header__whatsapp-btn:hover {
+  background: #20ba59;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 25, 255, 0.15);
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.42);
 }
 
 /* Mobile Menu Button with Animated Spring Bars */
@@ -250,7 +264,7 @@
   }
 
   .header__nav,
-  .header__phone {
+  .header__whatsapp-btn {
     display: none;
   }
 

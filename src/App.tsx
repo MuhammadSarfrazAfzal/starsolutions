@@ -6,11 +6,10 @@ import Testimonials from './components/Testimonials'
 import Faq from './components/Faq'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import { ScrollProgressBar, FloatingWhatsApp } from './components/InteractiveWidgets'
+import { ScrollProgressBar } from './components/InteractiveWidgets'
 import { InteractiveStarfield } from './components/InteractiveStarfield'
 import { CursorGlow } from './components/CursorGlow'
 import { ClickRipple } from './components/ClickRipple'
-import { MobileBottomDock } from './components/MobileBottomDock'
 
 export default function App() {
   return (
@@ -29,8 +28,6 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-      <FloatingWhatsApp />
-      <MobileBottomDock />
     </div>
   )
 }

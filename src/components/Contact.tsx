@@ -72,12 +72,6 @@ export default function Contact() {
               </a>
             </motion.li>
             <motion.li whileHover={{ x: 6 }} whileTap={{ scale: 0.97 }}>
-              <img src={phoneIcon} alt="" width={40} height={40} />
-              <a href="tel:+923342221063" className="t-h5">
-                Call: +92 334 2221063
-              </a>
-            </motion.li>
-            <motion.li whileHover={{ x: 6 }} whileTap={{ scale: 0.97 }}>
               <img src={mailIcon} alt="" width={40} height={40} />
               <a href="mailto:info@starsolutions.com" className="t-h5">
                 info@starsolutions.com
