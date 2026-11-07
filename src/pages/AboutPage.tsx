@@ -1,37 +1,50 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
+import {
+  Star,
+  Zap,
+  ShieldCheck,
+  Users,
+  Smartphone,
+  Code2,
+  TrendingUp,
+  MapPin,
+  MessageCircle,
+  Clock,
+  ArrowRight,
+} from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import './AboutPage.css'
 
 const VALUES = [
   {
-    icon: '⚡',
+    icon: Zap,
     title: 'Zero-Lag Checkout Philosophy',
     desc: 'In retail, every extra second of register lag costs customer satisfaction and revenue. We architect systems tuned for microsecond response times and immediate synchronization.',
   },
   {
-    icon: '🛡️',
+    icon: ShieldCheck,
     title: 'Real-Store Battlefield Tested',
     desc: 'We never deploy untested theories to our clients. Every POS feature, app workflow, and marketing tactic is vetted and proven inside our own physical iPhone stores in the USA.',
   },
   {
-    icon: '🤝',
+    icon: Users,
     title: 'Founder & Senior Engineer Direct Access',
     desc: 'No endless ticketing queues or non-technical intermediaries. You get direct access via WhatsApp, phone, and in-person meetings at our Citi Housing, Jhelum headquarters.',
   },
   {
-    icon: '📱',
+    icon: Smartphone,
     title: 'Native-Grade Craftsmanship',
     desc: 'We build applications that leverage platform capabilities natively. From camera barcode scanning to biometric logins and thermal printer drivers, our software runs flawlessly.',
   },
   {
-    icon: '🌐',
+    icon: Code2,
     title: 'Zero Vendor Lock-In',
     desc: 'Clean, documented code written with modern industry-standard languages (React, TypeScript, Swift, Kotlin, PostgreSQL) that you own and control completely.',
   },
   {
-    icon: '📈',
+    icon: TrendingUp,
     title: 'Continuous Operational Evolution',
     desc: 'Retail never stands still. We stand beside you for the long haul with 24/7 SLA monitoring, feature upgrades, hardware expansions, and performance tuning.',
   },
@@ -51,7 +64,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            ⭐ About Star Solutions
+            <Star size={14} /> About Star Solutions
           </motion.div>
           <motion.h1
             className="page-hero__title"
@@ -83,10 +96,10 @@ export default function AboutPage() {
               rel="noopener noreferrer"
               className="btn-whatsapp"
             >
-              💬 WhatsApp: +92 334 2221063
+              <MessageCircle size={18} /> WhatsApp: +92 334 2221063
             </a>
             <Link to="/contact" className="btn-secondary">
-              Contact Our Jhelum Office →
+              Contact Our Jhelum Office <ArrowRight size={16} />
             </Link>
           </motion.div>
         </div>
@@ -170,13 +183,18 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="values-grid">
-            {VALUES.map((v) => (
-              <div key={v.title} className="value-card">
-                <span className="value-card__icon">{v.icon}</span>
-                <h3 className="value-card__title">{v.title}</h3>
-                <p className="value-card__desc">{v.desc}</p>
-              </div>
-            ))}
+            {VALUES.map((v) => {
+              const ValueIcon = v.icon
+              return (
+                <div key={v.title} className="value-card">
+                  <span className="value-card__icon">
+                    <ValueIcon size={26} color="var(--primary-main)" />
+                  </span>
+                  <h3 className="value-card__title">{v.title}</h3>
+                  <p className="value-card__desc">{v.desc}</p>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -192,15 +210,15 @@ export default function AboutPage() {
             </p>
             <div className="location-pill-list">
               <div className="location-pill-item">
-                <span className="icon">📍</span>
+                <MapPin size={20} color="var(--primary-main)" style={{ flexShrink: 0 }} />
                 <span>Near Opera Cinema, Star Plaza, Citi Housing, Jhelum, Punjab, Pakistan</span>
               </div>
               <div className="location-pill-item">
-                <span className="icon">💬</span>
+                <MessageCircle size={20} color="#25d366" style={{ flexShrink: 0 }} />
                 <span>WhatsApp Direct: +92 334 2221063</span>
               </div>
               <div className="location-pill-item">
-                <span className="icon">🕒</span>
+                <Clock size={20} color="var(--blue-gray-500)" style={{ flexShrink: 0 }} />
                 <span>Mon – Sat: 9:00 AM – 8:00 PM PKT (USA Support 24/7)</span>
               </div>
             </div>
@@ -214,7 +232,7 @@ export default function AboutPage() {
               rel="noopener noreferrer"
               className="btn-whatsapp"
             >
-              Open WhatsApp Chat
+              <MessageCircle size={18} /> Open WhatsApp Chat
             </a>
           </div>
         </div>
@@ -233,10 +251,10 @@ export default function AboutPage() {
             rel="noopener noreferrer"
             className="btn-whatsapp"
           >
-            WhatsApp Consultation
+            <MessageCircle size={18} /> WhatsApp Consultation
           </a>
           <Link to="/services" className="btn-secondary">
-            Explore All Services →
+            Explore All Services <ArrowRight size={16} />
           </Link>
         </div>
       </section>

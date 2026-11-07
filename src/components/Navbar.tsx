@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'motion/react'
+import { Home, Zap, Star, PhoneCall, MapPin } from 'lucide-react'
 import logoIcon from '../assets/icons/logo-icon.svg'
 import './Navbar.css'
 
 const NAV_ITEMS = [
-  { label: 'Home', href: '/', icon: '🏠' },
-  { label: 'Services', href: '/services', icon: '⚡' },
-  { label: 'About Us', href: '/about', icon: '⭐' },
-  { label: 'Contact Us', href: '/contact', icon: '📞' },
+  { label: 'Home', href: '/', icon: Home },
+  { label: 'Services', href: '/services', icon: Zap },
+  { label: 'About Us', href: '/about', icon: Star },
+  { label: 'Contact Us', href: '/contact', icon: PhoneCall },
 ]
 
 interface NavbarProps {
@@ -120,7 +121,7 @@ export default function Navbar({ standalone = false }: NavbarProps) {
                         }`}
                         onClick={() => setMenuOpen(false)}
                       >
-                        <span className="header__mobile-link-icon">{item.icon}</span>
+                        <item.icon size={18} className="header__mobile-link-icon" />
                         <span>{item.label}</span>
                       </Link>
                     </motion.div>
@@ -146,7 +147,8 @@ export default function Navbar({ standalone = false }: NavbarProps) {
                   <span>WhatsApp: +92 334 2221063</span>
                 </motion.a>
                 <span className="header__mobile-location">
-                  📍 Star Plaza, Near Opera Cinema, Citi Housing, Jhelum
+                  <MapPin size={13} style={{ display: 'inline', verticalAlign: '-1px', marginRight: '4px' }} />
+                  Star Plaza, Near Opera Cinema, Citi Housing, Jhelum
                 </span>
               </div>
             </motion.div>

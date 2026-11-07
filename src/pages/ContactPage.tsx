@@ -1,6 +1,18 @@
 import { useState, type FormEvent } from 'react'
 import { motion } from 'motion/react'
 import confetti from 'canvas-confetti'
+import {
+  PhoneCall,
+  MessageCircle,
+  MapPin,
+  Clock,
+  Award,
+  CheckCircle2,
+  Lock,
+  Send,
+  ArrowRight,
+  Phone,
+} from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import './ContactPage.css'
@@ -78,7 +90,7 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            📞 Get in Touch
+            <PhoneCall size={14} /> Get in Touch
           </motion.div>
           <motion.h1
             className="page-hero__title"
@@ -110,10 +122,10 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="btn-whatsapp"
             >
-              💬 WhatsApp: +92 334 2221063
+              <MessageCircle size={18} /> WhatsApp: +92 334 2221063
             </a>
             <a href="tel:+923342221063" className="btn-secondary">
-              Direct Call: +92 334 2221063
+              <Phone size={16} /> Call: +92 334 2221063
             </a>
           </motion.div>
         </div>
@@ -131,19 +143,23 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="contact-channel-card"
             >
-              <div className="contact-channel-icon contact-channel-icon--wa">💬</div>
+              <div className="contact-channel-icon contact-channel-icon--wa">
+                <MessageCircle size={24} />
+              </div>
               <div className="contact-channel-body">
                 <h4>WhatsApp Quick Connect</h4>
                 <p>Instant chat with our senior software engineers. Average reply time: under 15 minutes.</p>
                 <span className="contact-channel-link contact-channel-link--wa">
-                  +92 334 2221063 →
+                  +92 334 2221063 <ArrowRight size={14} />
                 </span>
               </div>
             </a>
 
             {/* Office Card */}
             <div className="contact-channel-card">
-              <div className="contact-channel-icon">📍</div>
+              <div className="contact-channel-icon">
+                <MapPin size={24} />
+              </div>
               <div className="contact-channel-body">
                 <h4>Headquarters Office</h4>
                 <p>Near Opera Cinema, Star Plaza, Citi Housing, Jhelum, Punjab, Pakistan.</p>
@@ -153,7 +169,9 @@ export default function ContactPage() {
 
             {/* Phone & Schedule Card */}
             <div className="contact-channel-card">
-              <div className="contact-channel-icon">🕒</div>
+              <div className="contact-channel-icon">
+                <Clock size={24} />
+              </div>
               <div className="contact-channel-body">
                 <h4>Working Hours & Support</h4>
                 <p>Office Hours: Monday – Saturday, 9:00 AM – 8:00 PM PKT.</p>
@@ -163,7 +181,9 @@ export default function ContactPage() {
 
             {/* Experience Card */}
             <div className="contact-channel-card">
-              <div className="contact-channel-icon">⭐</div>
+              <div className="contact-channel-icon">
+                <Award size={24} />
+              </div>
               <div className="contact-channel-body">
                 <h4>15 Years of US Retail Provenance</h4>
                 <p>Every solution backed by real retail store management and high-volume transaction reliability.</p>
@@ -181,7 +201,7 @@ export default function ContactPage() {
 
             {submitted ? (
               <div className="form-success-card">
-                <span className="form-success-icon">🎉</span>
+                <CheckCircle2 size={44} color="#16a34a" />
                 <h4>Thank You, {name}!</h4>
                 <p>
                   Your message has been received by our engineering team. We will review your requirements and reach out
@@ -193,7 +213,7 @@ export default function ContactPage() {
                   className="btn-whatsapp"
                   style={{ marginTop: '10px' }}
                 >
-                  Send Details Directly to WhatsApp Now →
+                  <MessageCircle size={18} /> Send Details Directly to WhatsApp Now <ArrowRight size={16} />
                 </button>
                 <button
                   type="button"
@@ -283,11 +303,11 @@ export default function ContactPage() {
                 </div>
 
                 <button type="submit" className="form-submit-btn">
-                  Submit Project Inquiry →
+                  <Send size={18} /> Submit Project Inquiry
                 </button>
 
-                <p style={{ fontSize: '12.5px', color: 'var(--blue-gray-500)', textAlign: 'center', marginTop: '6px' }}>
-                  🔒 Your information is confidential and never shared. We reply within 24 hours.
+                <p style={{ fontSize: '12.5px', color: 'var(--blue-gray-500)', textAlign: 'center', marginTop: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                  <Lock size={13} /> Your information is confidential and never shared. We reply within 24 hours.
                 </p>
               </form>
             )}

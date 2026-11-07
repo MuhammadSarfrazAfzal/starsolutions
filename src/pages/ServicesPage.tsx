@@ -1,5 +1,25 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
+import {
+  Zap,
+  RefreshCw,
+  Cpu,
+  WifiOff,
+  Smartphone,
+  ScanLine,
+  CreditCard,
+  Bell,
+  Globe,
+  ShoppingBag,
+  BarChart3,
+  ShieldCheck,
+  MapPin,
+  Target,
+  MessageSquare,
+  Repeat,
+  MessageCircle,
+  ArrowRight,
+} from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import './ServicesPage.css'
@@ -11,22 +31,22 @@ const PILLARS = [
     subtitle: 'Split-second checkouts, real-time multi-store inventory synchronization, and zero offline data loss.',
     features: [
       {
-        icon: '⚡',
+        icon: Zap,
         title: 'Sub-Second Checkout Engine',
         desc: 'Engineered for high-volume retail lines to prevent bottlenecking, split tickets, and scan items instantaneously.',
       },
       {
-        icon: '🔄',
+        icon: RefreshCw,
         title: 'Multi-Location Live Inventory Sync',
         desc: 'Real-time stock level synchronization across all physical stores, warehouse depots, and e-commerce portals.',
       },
       {
-        icon: '🔌',
+        icon: Cpu,
         title: 'Deep Hardware Compatibility',
         desc: 'Native integration with Star Micronics & Epson thermal printers, Zebra barcode scanners, MagTek, PAX, and cash drawers.',
       },
       {
-        icon: '📴',
+        icon: WifiOff,
         title: 'Offline-First Resilience',
         desc: 'Cashiers never stop ringing up sales even during internet outages; transactions queue and reconcile automatically.',
       },
@@ -45,22 +65,22 @@ const PILLARS = [
     subtitle: 'High-performance native and cross-platform mobile apps for retail workflows, customer loyalty, and rapid field execution.',
     features: [
       {
-        icon: '📱',
+        icon: Smartphone,
         title: 'Native & Cross-Platform Precision',
         desc: 'Built in Swift, Kotlin, React Native, and Flutter with smooth 60fps animations and fluid touch interactions.',
       },
       {
-        icon: '🔍',
+        icon: ScanLine,
         title: 'Staff Inventory & Barcode Scanners',
         desc: 'Turn iPhones and Android devices into industrial-grade barcode scanners for real-time stock audits and price lookups.',
       },
       {
-        icon: '💳',
+        icon: CreditCard,
         title: 'Digital Loyalty & Wallet Integration',
         desc: 'Apple Wallet & Google Pay digital member cards, personalized rewards, and tiered customer discounts.',
       },
       {
-        icon: '🔔',
+        icon: Bell,
         title: 'Geo-Targeted Push Notifications',
         desc: 'Automated promotions and flash-sale alerts triggered when customers are near your retail stores.',
       },
@@ -79,22 +99,22 @@ const PILLARS = [
     subtitle: 'Ultra-fast web platforms, custom administrative back-offices, and scalable headless e-commerce architectures.',
     features: [
       {
-        icon: '🌐',
+        icon: Globe,
         title: 'Bespoke Enterprise Web Applications',
         desc: 'Built using React, Next.js, TypeScript, and Node.js with component-driven systems and microservices.',
       },
       {
-        icon: '🛍️',
+        icon: ShoppingBag,
         title: 'High-Converting E-Commerce Platforms',
         desc: 'Seamless shopping experiences with 1-click checkouts, Stripe/PayPal gateways, and inventory automated sync.',
       },
       {
-        icon: '📊',
+        icon: BarChart3,
         title: 'Custom Back-Office Dashboards',
         desc: 'Real-time sales tracking, employee shift monitoring, financial reconciliation, and exportable audit logs.',
       },
       {
-        icon: '🛡️',
+        icon: ShieldCheck,
         title: 'Enterprise Security & Compliance',
         desc: 'End-to-end encryption, strict RBAC permissions, automatic daily backups, and cloud CDN acceleration.',
       },
@@ -113,22 +133,22 @@ const PILLARS = [
     subtitle: 'Turn online impressions into physical store foot traffic and maximize recurring customer lifetime value.',
     features: [
       {
-        icon: '📍',
+        icon: MapPin,
         title: 'Local SEO & Google Maps Domination',
         desc: 'Rank #1 for high-intent "near me" retail searches, optimize Google Business profiles, and capture nearby shoppers.',
       },
       {
-        icon: '🎯',
+        icon: Target,
         title: 'High-ROAS Meta & Google Ad Campaigns',
         desc: 'Laser-targeted local advertising strategies tested with our own marketing budget across US retail stores.',
       },
       {
-        icon: '💬',
+        icon: MessageSquare,
         title: 'Automated WhatsApp & SMS Flows',
         desc: 'Deliver order confirmations, exclusive promotional offers, and abandoned cart reminders with 90%+ open rates.',
       },
       {
-        icon: '🔁',
+        icon: Repeat,
         title: 'Retention & Customer Lifetime Value',
         desc: 'Systematic customer re-engagement funnels designed to turn one-time buyers into loyal repeat brand advocates.',
       },
@@ -199,7 +219,7 @@ export default function ServicesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            ⚡ Enterprise Services & Solutions
+            <Zap size={14} /> Enterprise Services & Solutions
           </motion.div>
           <motion.h1
             className="page-hero__title"
@@ -231,10 +251,10 @@ export default function ServicesPage() {
               rel="noopener noreferrer"
               className="btn-whatsapp"
             >
-              💬 WhatsApp: +92 334 2221063
+              <MessageCircle size={18} /> WhatsApp: +92 334 2221063
             </a>
             <Link to="/contact" className="btn-secondary">
-              Get an Estimate →
+              Get an Estimate <ArrowRight size={16} />
             </Link>
           </motion.div>
         </div>
@@ -257,15 +277,20 @@ export default function ServicesPage() {
               <p className="service-pillar__subtitle">{pillar.subtitle}</p>
 
               <div className="service-pillar__features">
-                {pillar.features.map((feat) => (
-                  <div key={feat.title} className="feature-item">
-                    <span className="feature-item__icon">{feat.icon}</span>
-                    <div className="feature-item__content">
-                      <h4>{feat.title}</h4>
-                      <p>{feat.desc}</p>
+                {pillar.features.map((feat) => {
+                  const FeatIcon = feat.icon
+                  return (
+                    <div key={feat.title} className="feature-item">
+                      <span className="feature-item__icon">
+                        <FeatIcon size={14} />
+                      </span>
+                      <div className="feature-item__content">
+                        <h4>{feat.title}</h4>
+                        <p>{feat.desc}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             </div>
 
@@ -336,7 +361,7 @@ export default function ServicesPage() {
             rel="noopener noreferrer"
             className="btn-whatsapp"
           >
-            Chat on WhatsApp
+            <MessageCircle size={18} /> Chat on WhatsApp
           </a>
           <Link to="/contact" className="btn-primary">
             Schedule a Free Consultation
