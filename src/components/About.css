@@ -35,6 +35,7 @@
 
 .about__arrow-icon {
   transition: transform 0.35s ease;
+  flex-shrink: 0;
 }
 
 .about:hover .about__arrow-icon {
@@ -82,17 +83,19 @@
   }
 }
 
+/* Tablet view */
 @media (max-width: 1100px) {
   .about__inner {
     grid-template-columns: minmax(0, 1fr);
     gap: 24px;
-    padding: 96px 24px 280px;
+    padding: 80px 24px 300px;
   }
   .about__title-row {
-    gap: 48px;
+    gap: 36px;
   }
   .about__title h2 {
     font-size: 48px;
+    white-space: normal;
   }
   .about__text {
     padding: 0;
@@ -100,9 +103,43 @@
   .about__crystal {
     left: 50%;
     top: auto;
-    bottom: -60px;
-    width: 420px;
+    bottom: -40px;
+    width: 380px;
     height: auto;
-    transform: translateX(-50%);
+    animation: floatTabletCrystal 7s ease-in-out infinite;
+  }
+}
+
+@keyframes floatTabletCrystal {
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-12px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+
+/* Mobile phone view */
+@media (max-width: 768px) {
+  .about__inner {
+    padding: 48px 16px 280px;
+    border-radius: 0 0 36px 36px;
+    gap: 20px;
+  }
+  .about__title-row {
+    gap: 16px;
+    align-items: center;
+  }
+  .about__title h2 {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+  .about__arrow-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .about__text p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .about__crystal {
+    width: 290px;
+    bottom: -30px;
   }
 }

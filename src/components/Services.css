@@ -24,7 +24,6 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  /* Figma: 1px left stroke drawn outside the panel */
   box-shadow: -1px 0 0 var(--white);
   border-radius: 56px;
 }
@@ -133,6 +132,7 @@
   white-space: nowrap;
 }
 
+/* Tablet & Mobile Media Queries */
 @media (max-width: 1100px) {
   .headline h2 {
     font-size: 40px;
@@ -159,9 +159,57 @@
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 768px) {
+  .headline {
+    padding: 32px 16px;
+  }
+  .headline h2 {
+    font-size: clamp(26px, 7vw, 34px);
+    white-space: normal;
+    text-align: center;
+  }
+  .services {
+    padding: 0 16px;
+  }
+  .services__panel {
+    border-radius: 32px;
+  }
+  .service-row {
+    padding: 28px 20px;
+    gap: 16px;
+    flex-direction: column;
+  }
+  .service-row:hover {
+    padding-left: 20px;
+  }
+  .service-row__content {
+    gap: 12px;
+  }
+  .service-row__title {
+    font-size: 20px;
+  }
+  .service-row__body {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .services__cta {
+    padding: 32px 20px;
+    gap: 20px;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .services__cta-title {
+    font-size: 22px;
+  }
   .services__cta-actions {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    width: 100%;
+    gap: 12px;
+  }
+  .services__cta-actions .outline-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
