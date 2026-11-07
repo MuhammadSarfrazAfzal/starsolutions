@@ -1,4 +1,5 @@
 .hero {
+  width: 100%;
   min-height: 640px;
   position: relative;
   z-index: 2;
@@ -37,7 +38,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 60px;
+  width: 100%;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 14px 40px;
 }
 
 .logo {
@@ -162,14 +166,24 @@
 }
 
 /* ---------- Hero content ---------- */
+.hero__container {
+  width: 100%;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 520px;
+}
+
 .hero__content {
   position: relative;
   z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 36px;
-  padding: 90px 60px 130px;
+  gap: 32px;
+  padding: 70px 40px 110px;
   max-width: 660px;
 }
 
@@ -206,9 +220,9 @@
 
 .hero__crystal {
   position: absolute;
-  top: -10px;
-  left: 540px;
-  width: 720px;
+  top: -20px;
+  right: -20px;
+  width: 700px;
   height: auto;
   max-width: none;
   pointer-events: none;
@@ -219,10 +233,14 @@
 /* ---------- Mobile & Tablet Breakpoints ---------- */
 @media (max-width: 1200px) {
   .hero__crystal {
-    left: auto;
-    right: -100px;
-    width: 580px;
-    height: auto;
+    right: -80px;
+    width: 560px;
+  }
+  .header {
+    padding: 14px 24px;
+  }
+  .hero__content {
+    padding: 60px 24px 90px;
   }
 }
 
@@ -332,6 +350,11 @@
     text-align: center;
     line-height: 1.4;
     padding: 4px 8px;
+  }
+
+  .hero__container {
+    flex-direction: column;
+    min-height: auto;
   }
 
   .hero__content {

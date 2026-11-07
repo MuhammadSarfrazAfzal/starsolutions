@@ -184,56 +184,58 @@ export default function Hero() {
         </AnimatePresence>
       </header>
 
-      <motion.div
-        className="hero__content"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="hero__heading">
-          <motion.h1
-            className="t-h1"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <span className="hero__accent">15 Years Delivering</span>{' '}
-            <br />
-            POS & Software Solutions
-          </motion.h1>
-          <motion.p
-            className="t-sub1 hero__sub"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          >
-            Star Solutions is a software development company specializing in delivering high-performance POS systems, mobile apps, web development, and digital marketing. Backed by 15 years in business and our own physical iPhone stores across the USA.
-          </motion.p>
-        </div>
-
+      <div className="hero__container">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          className="hero__content"
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <EmailForm />
-        </motion.div>
-      </motion.div>
+          <div className="hero__heading">
+            <motion.h1
+              className="t-h1"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <span className="hero__accent">15 Years Delivering</span>{' '}
+              <br />
+              POS & Software Solutions
+            </motion.h1>
+            <motion.p
+              className="t-sub1 hero__sub"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Star Solutions is a software development company specializing in delivering high-performance POS systems, mobile apps, web development, and digital marketing. Backed by 15 years in business and our own physical iPhone stores across the USA.
+            </motion.p>
+          </div>
 
-      {/* Crystal with Spring Parallax */}
-      <motion.img
-        className="hero__crystal"
-        src={crystal}
-        alt="Star Solutions Crystal"
-        width={834}
-        height={1139}
-        aria-hidden
-        style={{
-          x: crystalX,
-          y: crystalY,
-          rotate: crystalRotate,
-        }}
-      />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <EmailForm />
+          </motion.div>
+        </motion.div>
+
+        {/* Crystal with Spring Parallax */}
+        <motion.img
+          className="hero__crystal"
+          src={crystal}
+          alt="Star Solutions Crystal"
+          width={834}
+          height={1139}
+          aria-hidden
+          style={{
+            x: crystalX,
+            y: crystalY,
+            rotate: crystalRotate,
+          }}
+        />
+      </div>
     </section>
   )
 }
