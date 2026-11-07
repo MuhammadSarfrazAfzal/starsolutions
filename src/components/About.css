@@ -12,6 +12,7 @@
   padding: 120px;
   background: var(--blue-gray-50);
   border-radius: 0 0 56px 56px;
+  overflow: hidden;
 }
 
 .about__title {
@@ -32,6 +33,14 @@
   white-space: nowrap;
 }
 
+.about__arrow-icon {
+  transition: transform 0.35s ease;
+}
+
+.about:hover .about__arrow-icon {
+  transform: translate(6px, 6px);
+}
+
 .about__text {
   flex: 1 0 0;
   min-width: 1px;
@@ -39,6 +48,11 @@
   align-items: flex-end;
   padding: 190px 0 0 52px;
   color: var(--blue-gray-500);
+  z-index: 2;
+}
+
+.about__text p {
+  line-height: 1.6;
 }
 
 .about__text-strong {
@@ -53,6 +67,19 @@
   height: 549px;
   max-width: none;
   pointer-events: none;
+  animation: floatApproachCrystal 8s ease-in-out infinite;
+}
+
+@keyframes floatApproachCrystal {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(-1deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
 
 @media (max-width: 1100px) {

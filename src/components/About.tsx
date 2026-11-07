@@ -9,17 +9,16 @@ export default function About() {
         <div className="about__title">
           <div className="about__title-row">
             <h2 className="t-xl">Our</h2>
-            <img src={arrowDownRight} alt="" width={80} height={80} />
+            <img src={arrowDownRight} alt="" width={80} height={80} className="about__arrow-icon" />
           </div>
-          <h2 className="t-xl">Approach</h2>
+          <h2 className="t-xl">Story</h2>
         </div>
 
         <div className="about__text">
           <p className="t-sub1">
-            Discover our unique consulting methodology that combines in-depth industry knowledge, innovative thinking,
-            and a client-centric approach.{' '}
+            With 15 years running our own successful business, Star Solutions merges deep software engineering mastery with real-world retail ownership. Having our own physical business in the USA running multiple iPhone stores across America, we design technologies tested on the front lines of commerce.{' '}
             <span className="about__text-strong">
-              We partner with you every step of the way to ensure your business reaches its full potential.
+              Operating from Star Plaza, near Opera Cinema, Citi Housing, Jhelum to the United States, we specialize in delivering enterprise POS systems, cutting-edge mobile apps, modern web platforms, and high-impact digital marketing.
             </span>
           </p>
         </div>
