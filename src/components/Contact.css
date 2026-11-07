@@ -82,6 +82,14 @@
   transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
 
+.social img {
+  display: block;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
 .social:hover {
   transform: translateY(-3px) scale(1.05);
   background: var(--primary-light);
