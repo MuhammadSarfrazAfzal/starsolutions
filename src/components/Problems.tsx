@@ -28,14 +28,27 @@ const PROBLEMS = [
 
 function ProblemCard({ p, index }: { p: (typeof PROBLEMS)[0]; index: number }) {
   const [coords, setCoords] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
+  const [tilt, setTilt] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
   const [isHovered, setIsHovered] = useState(false)
 
   const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
-    setCoords({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    })
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    setCoords({ x, y })
+
+    if (window.innerWidth >= 900) {
+      const centerX = rect.width / 2
+      const centerY = rect.height / 2
+      const rotX = ((y - centerY) / centerY) * -5
+      const rotY = ((x - centerX) / centerX) * 5
+      setTilt({ x: rotX, y: rotY })
+    }
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+    setTilt({ x: 0, y: 0 })
   }
 
   return (
@@ -43,13 +56,18 @@ function ProblemCard({ p, index }: { p: (typeof PROBLEMS)[0]; index: number }) {
       className="problem-card"
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={handleMouseLeave}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -6, transition: { duration: 0.25 } }}
       whileTap={{ scale: 0.98 }}
+      style={{
+        transform:
+          isHovered && typeof window !== 'undefined' && window.innerWidth >= 900
+            ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(-6px)`
+            : undefined,
+      }}
     >
       {/* Interactive Spotlight Glow */}
       {isHovered && (

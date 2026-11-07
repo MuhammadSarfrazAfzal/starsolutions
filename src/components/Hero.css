@@ -196,9 +196,64 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 32px;
+  gap: 28px;
   padding: 70px 40px 110px;
   max-width: 660px;
+}
+
+/* 3D Telemetry HUD Pill */
+.hero__telemetry {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 18px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 25, 255, 0.16);
+  box-shadow: 0 4px 18px rgba(0, 25, 255, 0.08);
+}
+
+.hero__telemetry-radar {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #25d366;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.hero__telemetry-radar::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid #25d366;
+  animation: radarPulse 2s ease-out infinite;
+}
+
+@keyframes radarPulse {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.hero__telemetry-badge {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--primary-main);
+}
+
+.hero__telemetry-divider {
+  color: var(--blue-gray-300);
+  font-size: 12px;
+}
+
+.hero__telemetry-live {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--blue-gray-700);
 }
 
 .hero__heading {
@@ -230,6 +285,102 @@
 .hero__sub {
   color: var(--blue-gray-600);
   line-height: 1.6;
+}
+
+/* 3D Visual Floating Nodes */
+.hero__visual-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 55%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero__node-card {
+  position: absolute;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(0, 25, 255, 0.08);
+  cursor: default;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  z-index: 5;
+}
+
+.hero__node-card:hover {
+  box-shadow: 0 20px 48px rgba(0, 25, 255, 0.16);
+  border-color: var(--primary-main);
+}
+
+.hero__node-card .node-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0, 25, 255, 0.1) 0%, rgba(74, 92, 255, 0.15) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.hero__node-card .node-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__node-card .node-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--blue-gray-900);
+  line-height: 1.2;
+}
+
+.hero__node-card .node-sub {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--primary-main);
+}
+
+.hero__node-card--pos {
+  top: 14%;
+  left: 10%;
+  animation: floatNode1 7s ease-in-out infinite alternate;
+}
+
+.hero__node-card--retail {
+  top: 60%;
+  left: 2%;
+  animation: floatNode2 8s ease-in-out infinite alternate;
+}
+
+.hero__node-card--cloud {
+  top: 42%;
+  right: 6%;
+  animation: floatNode3 6.5s ease-in-out infinite alternate;
+}
+
+@keyframes floatNode1 {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-8px) rotate(1deg); }
+}
+
+@keyframes floatNode2 {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(8px) rotate(-1deg); }
+}
+
+@keyframes floatNode3 {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-6px) rotate(0.8deg); }
 }
 
 .hero__crystal {
@@ -358,6 +509,31 @@
   .hero__container {
     flex-direction: column;
     min-height: auto;
+  }
+
+  .hero__visual-wrap {
+    position: relative;
+    width: 100%;
+    margin: 10px auto 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero__node-card {
+    display: none;
+  }
+
+  .hero__telemetry {
+    padding: 6px 14px;
+    gap: 8px;
+  }
+
+  .hero__telemetry-badge {
+    font-size: 11px;
+  }
+
+  .hero__telemetry-live {
+    font-size: 11px;
   }
 
   .hero__content {

@@ -5,7 +5,7 @@ import ServicesPage from './pages/ServicesPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import { ScrollProgressBar } from './components/InteractiveWidgets'
-import { InteractiveStarfield } from './components/InteractiveStarfield'
+import { ThreeBackground } from './components/ThreeBackground'
 import { CursorGlow } from './components/CursorGlow'
 import { ClickRipple } from './components/ClickRipple'
 
@@ -24,7 +24,7 @@ export default function App() {
     <BrowserRouter>
       <div className="page">
         <ScrollToTop />
-        <InteractiveStarfield />
+        <ThreeBackground />
         <CursorGlow />
         <ClickRipple />
         <ScrollProgressBar />
