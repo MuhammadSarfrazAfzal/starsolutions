@@ -1,32 +1,13 @@
-import { useState, useRef, useEffect, type MouseEvent } from 'react'
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'motion/react'
+import { useRef, type MouseEvent } from 'react'
+import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
 import heroBg from '../assets/images/hero-bg.jpg'
 import crystal from '../assets/images/crystal-hero.png'
-import logoIcon from '../assets/icons/logo-icon.svg'
+import Navbar from './Navbar'
 import { EmailForm } from './ui'
 import './Hero.css'
 
-const NAV = [
-  { label: 'Services', href: '#services', icon: '⚡' },
-  { label: 'About Us', href: '#about', icon: '⭐' },
-  { label: 'Contact Us', href: '#contact', icon: '📞' },
-]
-
 export default function Hero() {
-  const [menuOpen, setMenuOpen] = useState(false)
   const heroRef = useRef<HTMLElement>(null)
-
-  // Prevent background scrolling when mobile menu is open
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [menuOpen])
 
   // 3D Mouse Parallax on Desktop
   const mouseX = useMotionValue(0)
@@ -55,10 +36,6 @@ export default function Hero() {
     mouseY.set(0)
   }
 
-  const handleLinkClick = () => {
-    setMenuOpen(false)
-  }
-
   return (
     <section
       ref={heroRef}
@@ -71,116 +48,7 @@ export default function Hero() {
         <img src={heroBg} alt="" />
       </div>
 
-      <header className="header">
-        <a href="#top" className="logo" aria-label="Star Solutions home">
-          <img src={logoIcon} alt="" width={29.963} height={29.963} className="logo__icon" />
-          <span className="logo__title">STAR SOLUTIONS</span>
-        </a>
-
-        {/* Desktop Navigation */}
-        <nav className="header__nav">
-          {NAV.map((item) => (
-            <a key={item.label} href={item.href} className="header__link t-btn-m">
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        {/* Desktop WhatsApp Button */}
-        <a
-          href="https://wa.me/923342221063"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="header__whatsapp-btn"
-          aria-label="Connect on WhatsApp"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.63C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.9C17.18 3.03 14.69 2 12.04 2ZM12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.82L4.43 19.64L5.26 16.59L5.07 16.29C4.24 14.97 3.8 13.46 3.8 11.91C3.8 7.37 7.5 3.67 12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15ZM16.56 14.41C16.31 14.28 15.1 13.69 14.88 13.61C14.65 13.52 14.49 13.48 14.32 13.73C14.16 13.98 13.69 14.53 13.54 14.7C13.4 14.86 13.25 14.89 13 14.76C12.75 14.64 11.94 14.37 10.99 13.52C10.25 12.86 9.75 12.05 9.61 11.8C9.46 11.55 9.59 11.42 9.72 11.29C9.83 11.18 9.97 11 10.1 10.85C10.22 10.7 10.26 10.59 10.34 10.43C10.42 10.26 10.38 10.12 10.32 10C10.26 9.87 9.76 8.64 9.56 8.13C9.36 7.63 9.15 7.7 9 7.7C8.85 7.69 8.69 7.69 8.52 7.69C8.35 7.69 8.08 7.75 7.85 8C7.62 8.25 7 8.83 7 10.01C7 11.19 7.87 12.33 8 12.49C8.12 12.66 9.7 15.1 12.16 16.16C12.75 16.41 13.2 16.56 13.56 16.68C14.15 16.86 14.69 16.84 15.12 16.77C15.6 16.7 16.59 16.17 16.8 15.58C17.01 14.99 17.01 14.49 16.95 14.41C16.89 14.33 16.81 14.53 16.56 14.41Z" />
-          </svg>
-          <span>WhatsApp</span>
-        </a>
-
-        {/* Mobile Hamburger Toggle Button */}
-        <motion.button
-          type="button"
-          className={`header__menu-btn ${menuOpen ? 'header__menu-btn--open' : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? 'Close Menu' : 'Open Menu'}
-          aria-expanded={menuOpen}
-          whileTap={{ scale: 0.88 }}
-        >
-          <span className="header__menu-bar"></span>
-          <span className="header__menu-bar"></span>
-          <span className="header__menu-bar"></span>
-        </motion.button>
-
-        {/* Mobile Dropdown Animated Drawer */}
-        <AnimatePresence>
-          {menuOpen && (
-            <>
-              {/* Dimmed Backdrop */}
-              <motion.div
-                className="header__mobile-backdrop"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.25 }}
-                onClick={() => setMenuOpen(false)}
-                aria-hidden="true"
-              />
-
-              {/* Animated Drawer */}
-              <motion.div
-                className="header__mobile-menu"
-                initial={{ opacity: 0, y: -20, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                transition={{ type: 'spring', damping: 25, stiffness: 280 }}
-              >
-                <nav className="header__mobile-nav">
-                  {NAV.map((item, i) => (
-                    <motion.a
-                      key={item.label}
-                      href={item.href}
-                      className="header__mobile-link"
-                      onClick={handleLinkClick}
-                      initial={{ opacity: 0, x: -16 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.05 + i * 0.06 }}
-                      whileTap={{ scale: 0.97 }}
-                    >
-                      <span className="header__mobile-link-icon">{item.icon}</span>
-                      <span>{item.label}</span>
-                    </motion.a>
-                  ))}
-                </nav>
-
-                <div className="header__mobile-actions">
-                  <motion.a
-                    href="https://wa.me/923342221063"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="header__mobile-whatsapp t-btn-s"
-                    onClick={handleLinkClick}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.24 }}
-                    whileTap={{ scale: 0.96 }}
-                  >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.63C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.9C17.18 3.03 14.69 2 12.04 2ZM12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.82L4.43 19.64L5.26 16.59L5.07 16.29C4.24 14.97 3.8 13.46 3.8 11.91C3.8 7.37 7.5 3.67 12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15ZM16.56 14.41C16.31 14.28 15.1 13.69 14.88 13.61C14.65 13.52 14.49 13.48 14.32 13.73C14.16 13.98 13.69 14.53 13.54 14.7C13.4 14.86 13.25 14.89 13 14.76C12.75 14.64 11.94 14.37 10.99 13.52C10.25 12.86 9.75 12.05 9.61 11.8C9.46 11.55 9.59 11.42 9.72 11.29C9.83 11.18 9.97 11 10.1 10.85C10.22 10.7 10.26 10.59 10.34 10.43C10.42 10.26 10.38 10.12 10.32 10C10.26 9.87 9.76 8.64 9.56 8.13C9.36 7.63 9.15 7.7 9 7.7C8.85 7.69 8.69 7.69 8.52 7.69C8.35 7.69 8.08 7.75 7.85 8C7.62 8.25 7 8.83 7 10.01C7 11.19 7.87 12.33 8 12.49C8.12 12.66 9.7 15.1 12.16 16.16C12.75 16.41 13.2 16.56 13.56 16.68C14.15 16.86 14.69 16.84 15.12 16.77C15.6 16.7 16.59 16.17 16.8 15.58C17.01 14.99 17.01 14.49 16.95 14.41C16.89 14.33 16.81 14.53 16.56 14.41Z" />
-                    </svg>
-                    WhatsApp: +92 334 2221063
-                  </motion.a>
-                  <span className="header__mobile-location">
-                    📍 Star Plaza, Near Opera Cinema, Citi Housing, Jhelum
-                  </span>
-                </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
-      </header>
+      <Navbar />
 
       <div className="hero__container">
         <motion.div
