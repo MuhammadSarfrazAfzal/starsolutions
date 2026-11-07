@@ -1,9 +1,13 @@
 .faq-section {
-  padding: 0 20px;
+  width: 100%;
+  padding: 40px 40px 60px;
   background: var(--blue-gray-900);
 }
 
 .faq-panel {
+  width: 100%;
+  max-width: var(--page-width);
+  margin: 0 auto;
   padding: 60px 80px 90px;
   background: var(--blue-gray-500);
   border-radius: 44px;
@@ -84,6 +88,9 @@
 }
 
 @media (max-width: 900px) {
+  .faq-section {
+    padding: 30px 24px 50px;
+  }
   .faq-panel {
     padding: 56px 24px 70px;
     border-radius: 36px;
@@ -96,7 +103,7 @@
 
 @media (max-width: 768px) {
   .faq-section {
-    padding: 0 16px;
+    padding: 20px 16px 40px;
   }
   .faq-panel {
     padding: 36px 16px 48px;
