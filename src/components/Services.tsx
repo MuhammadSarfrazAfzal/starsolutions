@@ -46,8 +46,9 @@ export default function Services() {
               className="service-row"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
+              viewport={{ once: true, margin: '-20px' }}
               transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              whileTap={{ scale: 0.98 }}
             >
               <img src={arrowDownRight} alt="" width={24} height={24} className="service-row__icon" />
               <div className="service-row__content">

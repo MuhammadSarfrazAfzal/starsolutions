@@ -40,9 +40,10 @@ function ProblemCard({ p, index }: { p: (typeof PROBLEMS)[0]; index: number }) {
       onMouseLeave={() => setIsHovered(false)}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.6, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: '-20px' }}
+      transition={{ duration: 0.6, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -6, transition: { duration: 0.25 } }}
+      whileTap={{ scale: 0.97 }}
     >
       {/* Interactive Spotlight Glow */}
       {isHovered && (
