@@ -8,10 +8,10 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: start;
-  gap: 80px;
-  padding: 120px;
+  gap: 56px;
+  padding: 80px 60px;
   background: var(--blue-gray-50);
-  border-radius: 0 0 56px 56px;
+  border-radius: 0 0 44px 44px;
   overflow: hidden;
 }
 
@@ -26,7 +26,7 @@
 .about__title-row {
   display: flex;
   align-items: flex-start;
-  gap: 204px;
+  gap: 120px;
 }
 
 .about__title h2 {
@@ -36,6 +36,8 @@
 .about__arrow-icon {
   transition: transform 0.35s ease;
   flex-shrink: 0;
+  width: 68px;
+  height: 68px;
 }
 
 .about:hover .about__arrow-icon {
@@ -47,8 +49,8 @@
   min-width: 1px;
   display: flex;
   flex-direction: column;
-  gap: 36px;
-  padding: 140px 0 0 52px;
+  gap: 28px;
+  padding: 70px 0 0 36px;
   color: var(--blue-gray-500);
   z-index: 2;
 }
@@ -65,18 +67,18 @@
 .about__stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 14px;
   width: 100%;
 }
 
 .about__stat-item {
   display: flex;
   flex-direction: column;
-  padding: 16px 20px;
+  padding: 14px 18px;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(8px);
   border: 1px solid var(--blue-gray-200);
-  border-radius: 20px;
+  border-radius: 18px;
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
   transition: transform 0.25s ease, border-color 0.25s ease;
 }
@@ -88,14 +90,14 @@
 
 .about__stat-value {
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
   color: var(--primary-main);
   line-height: 1.2;
 }
 
 .about__stat-label {
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   color: var(--blue-gray-600);
   margin-top: 4px;
@@ -103,10 +105,10 @@
 
 .about__crystal {
   position: absolute;
-  left: 95px;
-  top: 158px;
-  width: 620px;
-  height: 549px;
+  left: 80px;
+  top: 120px;
+  width: 520px;
+  height: auto;
   max-width: none;
   pointer-events: none;
   animation: floatApproachCrystal 8s ease-in-out infinite;
@@ -129,13 +131,13 @@
   .about__inner {
     grid-template-columns: minmax(0, 1fr);
     gap: 24px;
-    padding: 80px 24px 300px;
+    padding: 70px 24px 280px;
   }
   .about__title-row {
     gap: 36px;
   }
   .about__title h2 {
-    font-size: 48px;
+    font-size: 44px;
     white-space: normal;
   }
   .about__text {
@@ -145,7 +147,7 @@
     left: 50%;
     top: auto;
     bottom: -40px;
-    width: 380px;
+    width: 360px;
     height: auto;
     animation: floatTabletCrystal 7s ease-in-out infinite;
   }
@@ -160,7 +162,7 @@
 /* Mobile phone view */
 @media (max-width: 768px) {
   .about__inner {
-    padding: 48px 16px 280px;
+    padding: 44px 16px 260px;
     border-radius: 0 0 36px 36px;
     gap: 20px;
   }
@@ -190,7 +192,7 @@
     font-size: 22px;
   }
   .about__crystal {
-    width: 290px;
+    width: 280px;
     bottom: -30px;
   }
 }
