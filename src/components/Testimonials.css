@@ -65,7 +65,6 @@
 
 .testimonial__mark {
   display: block;
-  /* cap-trimmed line box of the 48px glyph */
   height: 33px;
   padding-left: 1px;
   color: var(--primary-light);
@@ -91,21 +90,47 @@
 
 .testimonials__nav button {
   display: flex;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .testimonials__nav button:hover {
-  opacity: 0.6;
+  opacity: 0.7;
+  transform: scale(1.1);
 }
 
 @media (max-width: 1100px) {
   .testimonials {
-    padding: 96px 24px;
+    padding: 80px 24px;
   }
   .testimonials__title {
-    font-size: 48px;
+    font-size: 44px;
   }
   .testimonials__cards {
     flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials {
+    padding: 48px 16px;
+  }
+  .testimonials__inner {
+    gap: 24px;
+  }
+  .testimonials__title {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+  .testimonial {
+    padding: 24px 20px;
+    border-radius: 24px;
+    gap: 16px;
+  }
+  .testimonial__body p {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .testimonials__nav {
+    align-self: center;
   }
 }

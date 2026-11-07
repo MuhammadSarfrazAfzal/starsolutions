@@ -86,9 +86,36 @@
 @media (max-width: 900px) {
   .faq-panel {
     padding: 64px 24px 80px;
+    border-radius: 40px;
   }
   .faq-item__question {
     gap: 24px;
     padding: 28px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 0 16px;
+  }
+  .faq-panel {
+    padding: 36px 16px 48px;
+    border-radius: 28px;
+  }
+  .faq__title {
+    font-size: clamp(28px, 8vw, 36px);
+    margin-bottom: 8px;
+  }
+  .faq-item__question {
+    gap: 16px;
+    padding: 20px 0;
+  }
+  .faq-item__question span {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .faq-item__answer p {
+    font-size: 14px;
+    line-height: 1.55;
   }
 }
