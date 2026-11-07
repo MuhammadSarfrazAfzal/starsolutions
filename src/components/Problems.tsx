@@ -46,7 +46,7 @@ function ProblemCard({ p, index }: { p: (typeof PROBLEMS)[0]; index: number }) {
       onMouseLeave={() => setIsHovered(false)}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
+      viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -6, transition: { duration: 0.25 } }}
       whileTap={{ scale: 0.98 }}
@@ -89,7 +89,7 @@ export default function Problems() {
           className="problems__kicker"
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
           Bottlenecks We Solve
@@ -98,7 +98,7 @@ export default function Problems() {
           className="problems__title"
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
         >
           Are You Facing These Retail & Software Challenges?
