@@ -1,3 +1,4 @@
+import { motion } from 'motion/react'
 import arrowDownRight from '../assets/icons/arrow-down-right-white-80.svg'
 import facebook from '../assets/icons/facebook.svg'
 import instagram from '../assets/icons/instagram.svg'
@@ -20,7 +21,13 @@ const SOCIALS = [
 export default function Contact() {
   return (
     <section className="contact" id="contact">
-      <div className="contact__inner">
+      <motion.div
+        className="contact__inner"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div className="contact__left">
           <div className="contact__intro">
             <div>
@@ -37,9 +44,16 @@ export default function Contact() {
 
           <div className="contact__socials">
             {SOCIALS.map((s) => (
-              <a key={s.name} href={s.href} className="social" aria-label={s.name}>
+              <motion.a
+                key={s.name}
+                href={s.href}
+                className="social"
+                aria-label={s.name}
+                whileHover={{ scale: 1.15, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <img src={s.icon} alt="" width={18} height={18} />
-              </a>
+              </motion.a>
             ))}
           </div>
         </div>
@@ -51,34 +65,34 @@ export default function Contact() {
           </div>
 
           <ul className="contact__details">
-            <li>
+            <motion.li whileHover={{ x: 6 }}>
               <img src={phoneIcon} alt="" width={40} height={40} />
               <a href="https://wa.me/923342221063" target="_blank" rel="noopener noreferrer" className="t-h5 contact__whatsapp-link">
                 WhatsApp: +92 334 2221063
               </a>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li whileHover={{ x: 6 }}>
               <img src={phoneIcon} alt="" width={40} height={40} />
               <a href="tel:+923342221063" className="t-h5">
                 Call: +92 334 2221063
               </a>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li whileHover={{ x: 6 }}>
               <img src={mailIcon} alt="" width={40} height={40} />
               <a href="mailto:info@starsolutions.com" className="t-h5">
                 info@starsolutions.com
               </a>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li whileHover={{ x: 6 }}>
               <span className="contact__location-icon">
                 <img src={locationBg} alt="" width={40} height={40} />
                 <img src={locationPin} alt="" width={24} height={24} className="contact__location-pin" />
               </span>
               <span className="t-h5">Near Opera Cinema, Star Plaza, Citi Housing, Jhelum</span>
-            </li>
+            </motion.li>
           </ul>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

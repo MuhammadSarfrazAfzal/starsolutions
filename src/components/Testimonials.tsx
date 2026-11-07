@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
 import arrowLeft from '../assets/icons/arrow-left.svg'
 import arrowRight from '../assets/icons/arrow-right.svg'
 import './Testimonials.css'
@@ -39,35 +40,66 @@ export default function Testimonials() {
   return (
     <section className="testimonials">
       <div className="testimonials__inner">
-        <h2 className="t-xl testimonials__title">
+        <motion.h2
+          className="t-xl testimonials__title"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
           <span className="text-outline">Client</span>
           <br />
           <span className="testimonials__solid">Success</span> <span className="text-outline">Stories</span>
-        </h2>
+        </motion.h2>
 
         <div className="testimonials__cards">
           {TESTIMONIALS.map((t, i) => (
-            <figure
+            <motion.figure
               key={t.author}
               className={`testimonial ${i === active ? 'testimonial--active' : ''}`}
               onClick={() => setActive(i)}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.98 }}
+              layout
             >
               <blockquote className="testimonial__body">
                 <QuoteMark />
-                <p className="t-body-m">{t.quote}</p>
+                <AnimatePresence mode="wait">
+                  <motion.p
+                    key={t.quote}
+                    className="t-body-m"
+                    initial={{ opacity: 0.8 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {t.quote}
+                  </motion.p>
+                </AnimatePresence>
               </blockquote>
               <figcaption className="t-btn-s testimonial__author">{t.author}</figcaption>
-            </figure>
+            </motion.figure>
           ))}
         </div>
 
         <div className="testimonials__nav">
-          <button type="button" aria-label="Previous testimonial" onClick={() => setActive((active - 1 + count) % count)}>
+          <motion.button
+            type="button"
+            aria-label="Previous testimonial"
+            onClick={() => setActive((active - 1 + count) % count)}
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.9 }}
+          >
             <img src={arrowLeft} alt="" width={24} height={24} />
-          </button>
-          <button type="button" aria-label="Next testimonial" onClick={() => setActive((active + 1) % count)}>
+          </motion.button>
+          <motion.button
+            type="button"
+            aria-label="Next testimonial"
+            onClick={() => setActive((active + 1) % count)}
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.9 }}
+          >
             <img src={arrowRight} alt="" width={24} height={24} />
-          </button>
+          </motion.button>
         </div>
       </div>
     </section>

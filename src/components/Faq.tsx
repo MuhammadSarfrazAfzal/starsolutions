@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
 import arrowDownRight from '../assets/icons/arrow-down-right-white-24.svg'
 import './Faq.css'
 
@@ -36,9 +37,15 @@ export default function Faq() {
     <section className="faq-section">
       <div className="faq-panel">
         <div className="faq">
-          <h2 className="t-xl faq__title">
+          <motion.h2
+            className="t-xl faq__title"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
             FAQ<span className="faq__title-s">s</span>
-          </h2>
+          </motion.h2>
 
           {FAQS.map((item, i) => {
             const isOpen = open === i
@@ -51,11 +58,28 @@ export default function Faq() {
                   onClick={() => setOpen(isOpen ? null : i)}
                 >
                   <span className="t-h4">{item.q}</span>
-                  <img src={arrowDownRight} alt="" width={24} height={24} />
+                  <motion.img
+                    src={arrowDownRight}
+                    alt=""
+                    width={24}
+                    height={24}
+                    animate={{ rotate: isOpen ? -90 : 0 }}
+                    transition={{ duration: 0.25 }}
+                  />
                 </button>
-                <div className="faq-item__answer" hidden={!isOpen}>
-                  <p className="t-body-l">{item.a}</p>
-                </div>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      className="faq-item__answer"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <p className="t-body-l">{item.a}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             )
           })}
