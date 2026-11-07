@@ -3,7 +3,6 @@ import arrowLeft from '../assets/icons/arrow-left.svg'
 import arrowRight from '../assets/icons/arrow-right.svg'
 import './Testimonials.css'
 
-/** Closing quote glyph from the "Angry" typeface (48px, cap-trimmed), drawn as vector */
 function QuoteMark() {
   return (
     <span className="testimonial__mark" aria-hidden>
@@ -18,18 +17,18 @@ function QuoteMark() {
 const TESTIMONIALS = [
   {
     quote:
-      'Working with Conscellence was a game-changer for us. Their market analysis and insights helped us navigate challenging market conditions and seize new opportunities. Thanks to their expertise, we achieved record-breaking sales last quarter.',
-    author: 'Michael Thompson, Founder of EcoGreen Solutions',
+      'Star Solutions completely streamlined our multi-location retail checkout in the US with their custom POS system. Zero downtime, seamless inventory synchronization, and automated daily reconciliations saved our stores hundreds of hours.',
+    author: 'David Reynolds, Operations Director, US iPhone & Tech Retail Chain',
   },
   {
     quote:
-      "Conscellence transformed our business operations with their customized strategies. Their team identified key areas for improvement and provided actionable solutions that significantly boosted our efficiency and growth. We couldn't be happier with the results.",
-    author: 'Emma Rodriguez, CEO of TrendTech Innovations',
+      'Their mobile app and web development team delivered an exceptional retail platform. Backed by their 15 years running their own business, they anticipate real retail bottlenecks and deliver software that actually scales.',
+    author: 'Sarah Jenkins, Founder of RetailWave Solutions',
   },
   {
     quote:
-      'The leadership training and team-building programs provided by Conscellence have been invaluable. Our team is now more cohesive and motivated, and our leaders are better equipped to drive the company forward. Cons truly understands our needs and delivers exceptional results.',
-    author: 'Lisa Nguyen, COO of HealthyBites Inc.',
+      'From custom POS integrations to digital marketing campaigns, Star Solutions provided end-to-end expertise. Their team at Star Plaza Citi Housing Jhelum communicates proactively and delivers world-class results.',
+    author: 'Malik Zeeshan, Enterprise Partner',
   },
 ]
 

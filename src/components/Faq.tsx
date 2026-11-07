@@ -4,28 +4,28 @@ import './Faq.css'
 
 const FAQS = [
   {
-    q: 'What services does Conscellence offer?',
-    a: 'We offer a range of services including Customized Strategy Development, Operational Efficiency Optimization, Market Analysis and Insights, and Leadership and Team Building programs. Each service is tailored to meet the specific needs of your business.',
+    q: 'What software solutions does Star Solutions specialize in?',
+    a: 'We specialize in enterprise Point of Sale (POS) systems, custom mobile application development (iOS & Android), modern web development, and performance digital marketing strategies tailored for retail and enterprise businesses.',
   },
   {
-    q: 'How can Conscellence help my business grow?',
-    a: 'We identify the barriers holding your business back, then build a practical, data-driven plan to unlock new revenue, improve efficiency and strengthen your team.',
+    q: 'What is your background in running physical businesses in the USA?',
+    a: 'Star Solutions has been in business for 15 years. We own and operate physical retail iPhone stores across America, giving us direct, hands-on expertise in high-volume retail, hardware peripherals, barcode scanning, and multi-location inventory syncing.',
   },
   {
-    q: 'What industries do you specialize in?',
-    a: 'Our consultants have worked across retail, technology, healthcare, manufacturing, food & beverage and professional services, and we adapt our approach to each market.',
+    q: 'Where is Star Solutions located?',
+    a: 'Our tech headquarters is located in Star Plaza, near Opera Cinema, Citi Housing, Jhelum, Pakistan, working in tandem with our retail operations in the United States.',
   },
   {
-    q: 'Are your services customized to my business needs?',
-    a: 'Yes. Every engagement starts with a discovery phase so the strategy, timeline and deliverables fit your goals, budget and team.',
+    q: 'How can I contact Star Solutions on WhatsApp?',
+    a: 'You can connect with us directly on WhatsApp at +92 334 2221063 for instant consultations, project quotations, and live software demos.',
   },
   {
-    q: 'What is the typical duration of a consulting project?',
-    a: 'Most projects run between 6 and 16 weeks depending on scope. Ongoing advisory retainers are also available.',
+    q: 'Can you tailor POS and software to multi-store businesses?',
+    a: 'Yes. All our POS and custom software architectures are purpose-built to handle multi-branch sync, offline-first reliability, inventory management, and centralized business reporting.',
   },
   {
-    q: 'How do you ensure the confidentiality of our business information?',
-    a: 'All engagements are covered by an NDA, access to your data is limited to the project team, and information is stored securely and deleted on request.',
+    q: 'How long have you been in business?',
+    a: 'Star Solutions has been actively running its own business for over 15 years, delivering reliable digital solutions and powering brick-and-mortar retail across international markets.',
   },
 ]
 

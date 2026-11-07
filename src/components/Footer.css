@@ -2,38 +2,51 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 80px;
-  background: var(--blue-gray-800);
-  color: var(--white);
+  padding: 40px 80px;
 }
 
 .footer__brand {
   display: flex;
   align-items: center;
   gap: 16px;
+  transition: transform 0.2s ease;
 }
 
-.footer__wordmark {
-  /* #0F172A → white */
-  filter: brightness(0) invert(1);
+.footer__brand:hover {
+  transform: translateY(-2px);
+}
+
+.footer__icon {
+  filter: drop-shadow(0 2px 8px rgba(0, 25, 255, 0.2));
+}
+
+.footer__brand-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue-gray-900);
+  letter-spacing: 0.5px;
 }
 
 .footer__legal {
-  white-space: pre;
+  color: var(--blue-gray-400);
+}
+
+.footer__legal a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
 }
 
 .footer__legal a:hover {
-  text-decoration: underline;
+  color: var(--primary-main);
 }
 
 @media (max-width: 900px) {
   .footer {
     flex-direction: column;
-    gap: 16px;
-    padding: 24px;
+    gap: 24px;
+    padding: 32px 24px;
     text-align: center;
-  }
-  .footer__legal {
-    white-space: normal;
   }
 }

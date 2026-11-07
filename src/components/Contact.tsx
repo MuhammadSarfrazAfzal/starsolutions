@@ -25,13 +25,13 @@ export default function Contact() {
           <div className="contact__intro">
             <div>
               <div className="contact__title-row">
-                <img src={arrowDownRight} alt="" width={80} height={80} />
+                <img src={arrowDownRight} alt="" width={80} height={80} className="contact__arrow-icon" />
                 <h2 className="t-xl">Contact </h2>
               </div>
               <h2 className="t-xl">us today</h2>
             </div>
             <p className="t-body-l contact__lead">
-              Contact us today to schedule a consultation and discover how we can help your business thrive.
+              Ready to transform your retail operations and software? Contact Star Solutions today for custom POS systems, mobile apps, web development, and digital marketing.
             </p>
           </div>
 
@@ -53,14 +53,20 @@ export default function Contact() {
           <ul className="contact__details">
             <li>
               <img src={phoneIcon} alt="" width={40} height={40} />
-              <a href="tel:+19877495403" className="t-h5">
-                (987)-749-5403
+              <a href="https://wa.me/923342221063" target="_blank" rel="noopener noreferrer" className="t-h5 contact__whatsapp-link">
+                WhatsApp: +92 334 2221063
+              </a>
+            </li>
+            <li>
+              <img src={phoneIcon} alt="" width={40} height={40} />
+              <a href="tel:+923342221063" className="t-h5">
+                Call: +92 334 2221063
               </a>
             </li>
             <li>
               <img src={mailIcon} alt="" width={40} height={40} />
-              <a href="mailto:info@conscellence.com" className="t-h5">
-                info@conscellence.com
+              <a href="mailto:info@starsolutions.com" className="t-h5">
+                info@starsolutions.com
               </a>
             </li>
             <li>
@@ -68,7 +74,7 @@ export default function Contact() {
                 <img src={locationBg} alt="" width={40} height={40} />
                 <img src={locationPin} alt="" width={24} height={24} className="contact__location-pin" />
               </span>
-              <span className="t-h5">123 Business Road, Suite 456, City, State, ZIP Code</span>
+              <span className="t-h5">Near Opera Cinema, Star Plaza, Citi Housing, Jhelum</span>
             </li>
           </ul>
         </div>
