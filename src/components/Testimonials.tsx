@@ -87,16 +87,25 @@ export default function Testimonials() {
             aria-label="Previous testimonial"
             onClick={() => setActive((active - 1 + count) % count)}
             whileHover={{ scale: 1.15 }}
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.85 }}
           >
             <img src={arrowLeft} alt="" width={24} height={24} />
           </motion.button>
+          <div className="testimonials__dots" aria-hidden="true">
+            {TESTIMONIALS.map((_, dotIdx) => (
+              <span
+                key={dotIdx}
+                className={`testimonials__dot ${dotIdx === active ? 'testimonials__dot--active' : ''}`}
+                onClick={() => setActive(dotIdx)}
+              />
+            ))}
+          </div>
           <motion.button
             type="button"
             aria-label="Next testimonial"
             onClick={() => setActive((active + 1) % count)}
             whileHover={{ scale: 1.15 }}
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.85 }}
           >
             <img src={arrowRight} alt="" width={24} height={24} />
           </motion.button>

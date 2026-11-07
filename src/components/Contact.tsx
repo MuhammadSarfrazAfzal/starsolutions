@@ -65,25 +65,25 @@ export default function Contact() {
           </div>
 
           <ul className="contact__details">
-            <motion.li whileHover={{ x: 6 }}>
+            <motion.li whileHover={{ x: 6 }} whileTap={{ scale: 0.97 }}>
               <img src={phoneIcon} alt="" width={40} height={40} />
               <a href="https://wa.me/923342221063" target="_blank" rel="noopener noreferrer" className="t-h5 contact__whatsapp-link">
                 WhatsApp: +92 334 2221063
               </a>
             </motion.li>
-            <motion.li whileHover={{ x: 6 }}>
+            <motion.li whileHover={{ x: 6 }} whileTap={{ scale: 0.97 }}>
               <img src={phoneIcon} alt="" width={40} height={40} />
               <a href="tel:+923342221063" className="t-h5">
                 Call: +92 334 2221063
               </a>
             </motion.li>
-            <motion.li whileHover={{ x: 6 }}>
+            <motion.li whileHover={{ x: 6 }} whileTap={{ scale: 0.97 }}>
               <img src={mailIcon} alt="" width={40} height={40} />
               <a href="mailto:info@starsolutions.com" className="t-h5">
                 info@starsolutions.com
               </a>
             </motion.li>
-            <motion.li whileHover={{ x: 6 }}>
+            <motion.li whileHover={{ x: 6 }} whileTap={{ scale: 0.97 }}>
               <span className="contact__location-icon">
                 <img src={locationBg} alt="" width={40} height={40} />
                 <img src={locationPin} alt="" width={24} height={24} className="contact__location-pin" />

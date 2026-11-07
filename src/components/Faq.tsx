@@ -51,11 +51,12 @@ export default function Faq() {
             const isOpen = open === i
             return (
               <div key={item.q} className={`faq-item ${isOpen ? 'faq-item--open' : ''}`}>
-                <button
+                <motion.button
                   type="button"
                   className="faq-item__question"
                   aria-expanded={isOpen}
                   onClick={() => setOpen(isOpen ? null : i)}
+                  whileTap={{ scale: 0.99 }}
                 >
                   <span className="t-h4">{item.q}</span>
                   <motion.img
@@ -66,7 +67,7 @@ export default function Faq() {
                     animate={{ rotate: isOpen ? -90 : 0 }}
                     transition={{ duration: 0.25 }}
                   />
-                </button>
+                </motion.button>
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
