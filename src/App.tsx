@@ -7,10 +7,12 @@ import Faq from './components/Faq'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import { ScrollProgressBar, FloatingWhatsApp } from './components/InteractiveWidgets'
+import { InteractiveStarfield } from './components/InteractiveStarfield'
 
 export default function App() {
   return (
     <div className="page">
+      <InteractiveStarfield />
       <ScrollProgressBar />
       <Hero />
       <main>
