@@ -1,312 +1,282 @@
 .problems {
-  width: 100%;
-  position: relative;
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 48px;
-  padding: 90px 40px;
-  background: var(--blue-gray-50);
+  overflow: hidden;
 }
 
-.problems__header {
-  display: flex;
-  flex-direction: column;
+/* Wide screens: heading on the left, a row of cards that the scroll pushes sideways */
+.problems__frame {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
   align-items: center;
-  gap: 14px;
-  text-align: center;
-  width: 100%;
-  max-width: 920px;
-  margin: 0 auto;
+  gap: 64px;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 112px 0 48px 120px;
 }
 
-.problems__kicker {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 16px;
-  border-radius: 20px;
-  background: rgba(0, 25, 255, 0.08);
-  color: var(--primary-main);
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  border: 1px solid rgba(0, 25, 255, 0.15);
+.problems__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
 }
 
 .problems__title {
   color: var(--blue-gray-900);
-  font-family: var(--font-display);
-  font-size: 38px;
-  line-height: 1.25;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  text-align: center;
 }
 
-.problems__grid {
-  display: flex;
-  align-items: stretch;
-  gap: 24px;
+.problems__hint {
+  color: var(--blue-gray-600);
+}
+
+.problems__progress {
   width: 100%;
-  max-width: var(--page-width);
-  margin: 0 auto;
+  height: 2px;
+  margin-top: 16px;
+  background: var(--blue-gray-200);
 }
 
-.problem-card {
+.problems__progress span {
+  display: block;
+  height: 100%;
+  background: var(--primary-main);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.problems__viewport {
+  min-width: 0;
+  /* cards disappear softly at the left edge instead of sliding over the heading;
+     the vertical padding leaves room for the card shadows */
+  margin: -64px 0;
+  padding: 64px 0;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 48px);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 48px);
+}
+
+.problems__track {
+  list-style: none;
+  margin: 0;
+  padding: 0 120px 0 0;
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  will-change: transform;
+}
+
+/* ---------- Card ---------- */
+.problem {
+  --card-h: min(520px, calc(100svh - 200px));
   position: relative;
-  flex: 1 0 0;
-  min-width: 1px;
+  flex: none;
+  height: var(--card-h);
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 40px;
+  background: var(--blue-gray-900);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.16);
+  color: var(--white);
+  isolation: isolate;
+}
+
+.problem > .media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  transition: transform 0.6s ease;
+}
+
+/* navy fade keeps the problem text readable on any photo */
+.problem::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.05) 30%, rgba(15, 23, 42, 0.92));
+}
+
+.problem__front {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 32px;
+}
+
+.problem__num {
+  font-family: var(--font-accent);
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--primary-light);
+}
+
+.problem__pain {
+  color: var(--blue-gray-200);
+}
+
+.problem__toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--primary-main);
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.2);
+  transition: transform 0.35s ease, background-color 0.35s ease, color 0.35s ease;
+}
+
+.problem__toggle:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
+}
+
+/* the fix slides up over the photo in the brand blue */
+.problem__fix {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 18px;
-  padding: 36px 30px;
-  background: #ffffff;
-  border: 1px solid var(--blue-gray-200);
-  border-radius: 28px;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
-  overflow: hidden;
-  cursor: default;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.problem-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--primary-main);
-  box-shadow: 0 20px 48px rgba(0, 25, 255, 0.12);
-}
-
-.problem-card__spotlight {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.problem-card__header {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding-bottom: 6px;
-}
-
-.problem-card__num-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(0, 25, 255, 0.08) 0%, rgba(74, 92, 255, 0.14) 100%);
-  border: 1px solid rgba(0, 25, 255, 0.18);
-  color: var(--primary-main);
-  box-shadow: 0 4px 12px rgba(0, 25, 255, 0.08);
-  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-}
-
-.problem-card:hover .problem-card__num-badge {
+  gap: 16px;
+  padding: 32px;
+  border-radius: 32px 32px 0 0;
   background: var(--primary-main);
-  color: #ffffff;
-  transform: scale(1.08);
-  box-shadow: 0 6px 18px rgba(0, 25, 255, 0.35);
+  transform: translateY(101%);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.problem-card__num {
-  font-family: var(--font-display);
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.5px;
+.problem__fix-label {
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.12em;
 }
 
-.problem-card__tag {
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--blue-gray-500);
-  background: var(--blue-gray-50);
-  padding: 4px 12px;
-  border-radius: 20px;
-  border: 1px solid var(--blue-gray-200);
-  letter-spacing: 0.3px;
-}
-
-.problem-card__title {
-  position: relative;
-  z-index: 2;
-  color: var(--blue-gray-900);
-  font-family: var(--font-display);
-  font-size: 21px;
-  font-weight: 700;
-  line-height: 1.35;
-}
-
-.problem-card__body {
-  position: relative;
-  z-index: 2;
-  color: var(--blue-gray-600);
-  font-size: 15px;
-  line-height: 1.6;
-  flex: 1 0 auto;
-}
-
-.problem-card__footer {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding-top: 14px;
-  border-top: 1px dashed var(--blue-gray-200);
-}
-
-.problem-card__solution-pill {
+.problem__link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--primary-main);
+  padding: 10px 0 6px;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5);
+  transition: box-shadow 0.2s ease;
 }
 
-.problem-card__solution-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+.problem__link:hover,
+.problem__link:focus-visible {
+  box-shadow: inset 0 -2px 0 var(--white);
+}
+
+.problem.is-open .problem__fix,
+.problem:has(.problem__fix:focus-within) .problem__fix {
+  transform: none;
+}
+
+.problem.is-open .problem__toggle {
+  transform: rotate(45deg);
   background: var(--primary-main);
-  box-shadow: 0 0 8px rgba(0, 25, 255, 0.5);
+  color: var(--white);
 }
 
-@media (max-width: 1100px) {
-  .problems {
-    padding: 70px 24px;
-    gap: 36px;
-  }
-  .problems__title {
-    font-size: 32px;
-  }
-  .problems__grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-  }
-  .problem-card {
-    flex: none;
-    width: 100%;
-    height: auto;
-    min-height: auto;
-    overflow: visible;
-    padding: 30px 24px;
-    border-radius: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .problem-card__body {
-    flex: none;
-  }
+.problem.is-open > .media {
+  transform: scale(1.06);
 }
 
-@media (max-width: 600px) {
-  .problems {
-    padding: 56px 16px 64px;
-    gap: 28px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .problems__header {
-    gap: 12px;
-    width: 100%;
-    max-width: 100%;
-    padding: 0 4px;
-    box-sizing: border-box;
-  }
-  .problems__kicker {
-    font-size: 12px;
-    padding: 5px 14px;
-  }
-  .problems__title {
-    font-size: clamp(22px, 6.5vw, 28px);
-    line-height: 1.28;
-    word-break: break-word;
-    text-align: center;
-    width: 100%;
-  }
-  .problems__grid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .problem-card {
-    flex: none;
-    width: 100%;
-    height: auto;
-    min-height: auto;
-    overflow: visible;
-    padding: 24px 20px;
-    border-radius: 22px;
-    gap: 14px;
-    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-  }
-  .problem-card:hover {
+@media (hover: hover) {
+  .problem:hover .problem__fix {
     transform: none;
-    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
   }
-  .problem-card__header {
+  .problem:hover > .media {
+    transform: scale(1.06);
+  }
+  .problem:hover .problem__toggle {
+    transform: rotate(45deg);
+    background: var(--primary-main);
+    color: var(--white);
+  }
+}
+
+/* ---------- Narrow screens: cards in a grid, no pinning ---------- */
+@media (max-width: 1100px) {
+  .problems__frame {
     display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+    min-height: 0;
+    padding: 96px 24px;
+  }
+  .problems__head {
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding-bottom: 2px;
+    text-align: center;
   }
-  .problem-card__num-badge {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    flex-shrink: 0;
+  .problems__progress {
+    display: none;
   }
-  .problem-card__num {
-    font-size: 16px;
-    font-weight: 700;
+  .problems__viewport {
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    mask-image: none;
+    -webkit-mask-image: none;
   }
-  .problem-card__tag {
-    font-size: 11.5px;
-    padding: 4px 12px;
+  .problems__track {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    width: auto;
+    padding: 0;
   }
-  .problem-card__title {
-    display: block;
-    width: 100%;
-    font-size: 19px;
-    line-height: 1.35;
-    word-break: break-word;
+  .problem {
+    height: auto;
+    border-radius: 32px;
   }
-  .problem-card__body {
-    display: block;
-    width: 100%;
-    flex: none;
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--blue-gray-600);
+  .problem__front,
+  .problem__fix {
+    padding: 24px;
   }
-  .problem-card__footer {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding-top: 14px;
-    border-top: 1px dashed var(--blue-gray-200);
+}
+
+@media (max-width: 700px) {
+  .problems__track {
+    grid-template-columns: minmax(0, 1fr);
   }
-  .problem-card__solution-pill {
-    font-size: 12.5px;
-    line-height: 1.4;
+  .problem {
+    aspect-ratio: 4 / 4.6;
+  }
+}
+
+/* No sideways scrolling without motion: wrap the cards instead */
+@media (prefers-reduced-motion: reduce) and (min-width: 1101px) {
+  .problems__frame {
+    align-items: start;
+  }
+  .problems__progress {
+    display: none;
+  }
+  .problems__track {
+    flex-wrap: wrap;
+    width: auto;
+  }
+  .problem {
+    --card-h: 440px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .problem > .media,
+  .problem__fix,
+  .problem__toggle {
+    transition: none;
   }
 }

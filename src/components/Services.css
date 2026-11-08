@@ -1,129 +1,188 @@
 /* ---------- "What we can do for you?" headline ---------- */
 .headline {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 36px 20px;
-  background: var(--blue-gray-50);
+  padding: 40px 24px;
 }
 
 .headline h2 {
   color: var(--blue-gray-400);
   white-space: nowrap;
-  max-width: var(--page-width);
-  width: 100%;
-  text-align: center;
 }
 
 .headline__accent {
-  background: linear-gradient(135deg, #0019ff 0%, #4a5cff 50%, #0019ff 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shineAccent 5s linear infinite;
-  display: inline-block;
+  color: var(--primary-main);
 }
 
-/* ---------- Services list ---------- */
+/* ---------- Stacking service cards ---------- */
 .services {
-  width: 100%;
-  padding: 0 40px 60px;
-  background: var(--blue-gray-50);
-}
-
-.services__panel {
-  width: 100%;
-  max-width: var(--page-width);
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  box-shadow: -1px 0 0 var(--white);
-  border-radius: 44px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  gap: 8px;
+  padding: 0 24px;
 }
 
-.service-row {
+.services__stack {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.service-card {
+  position: sticky;
+  top: calc(96px + var(--i) * 16px);
+  /* in-page links (service strip, problem cards) land the card below the fixed header */
+  scroll-margin-top: 96px;
+}
+
+.service-card__inner {
+  /* --shade darkens a card as the next one covers it (driven by scroll) */
+  --shade: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 56px;
-  padding: 44px 56px;
+  padding: 56px 80px;
   background: var(--blue-gray-900);
-  box-shadow: inset 0 -1px 0 var(--white);
+  border-radius: 56px;
+  box-shadow: inset 0 0 0 1px rgba(248, 250, 252, 0.12), 0 -20px 40px rgba(15, 23, 42, 0.12);
   color: var(--white);
-  transition: background-color 0.35s ease, padding-left 0.35s ease;
+  transform-origin: 50% 0;
 }
 
-.service-row:nth-child(4) {
-  box-shadow: none;
+.service-card__inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--blue-gray-900);
+  opacity: var(--shade);
+  pointer-events: none;
 }
 
-.service-row:hover {
-  background-color: #141f36;
-  padding-left: 64px;
+.service-card__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
 }
 
-.service-row__icon {
-  flex-shrink: 0;
-  transition: transform 0.35s ease, filter 0.35s ease;
+.service-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.service-row:hover .service-row__icon {
-  transform: rotate(-90deg) scale(1.15);
-  filter: drop-shadow(0 0 8px rgba(74, 92, 255, 0.6));
+.service-card__icon {
+  transition: transform 0.25s ease;
 }
 
-.service-row__content {
-  flex: 1 0 0;
-  min-width: 1px;
+.service-card:hover .service-card__icon {
+  transform: rotate(-90deg);
+}
+
+.service-card__num {
+  font-family: var(--font-display);
+  font-size: 64px;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--blue-gray-600);
+}
+
+.service-card__tagline {
+  color: var(--primary-light);
+}
+
+.service-card__body {
+  color: var(--blue-gray-300);
+}
+
+.service-card__points {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+}
+
+.service-card__points li {
   display: flex;
   align-items: flex-start;
-  gap: 56px;
+  gap: 10px;
+  color: var(--blue-gray-50);
 }
 
-.service-row__title {
-  flex: 1 0 0;
-  min-width: 1px;
-  transition: color 0.3s ease;
+.service-card__points svg {
+  flex: none;
+  margin-top: 1px;
+  color: var(--primary-light);
 }
 
-.service-row:hover .service-row__title {
-  color: #8da4ff;
+.service-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding: 12px 0 6px;
+  box-shadow: inset 0 -1px 0 var(--blue-gray-600);
+  transition: box-shadow 0.2s ease, color 0.2s ease;
 }
 
-.service-row__body {
-  flex: 1 0 0;
-  min-width: 1px;
+.service-card__cta:hover {
+  color: var(--primary-light);
+  box-shadow: inset 0 -2px 0 var(--primary-light);
 }
 
+.service-card__cta svg {
+  transition: transform 0.2s ease;
+}
+
+.service-card__cta:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.service-card__visual {
+  position: relative;
+  min-height: 380px;
+  overflow: hidden;
+  border-radius: 40px;
+  background: var(--blue-gray-800);
+  /* keeps Safari clipping the drifting media to the rounded corners */
+  isolation: isolate;
+}
+
+/* The media is taller than the frame so the scroll drift (60px down to 30px up) never shows an edge */
+.service-card__visual > div {
+  position: absolute;
+  inset: -64px 0 -36px;
+}
+
+/* Brand-blue wash and a soft edge so the photo sits inside the dark card */
+.service-card__visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 85% 0%, rgba(74, 92, 255, 0.28), transparent 55%),
+    linear-gradient(180deg, transparent 55%, rgba(15, 23, 42, 0.45));
+  box-shadow: inset 0 0 0 1px rgba(248, 250, 252, 0.1);
+  pointer-events: none;
+}
+
+/* ---------- Free consultation ---------- */
 .services__cta {
   display: flex;
   align-items: center;
-  gap: 56px;
-  padding: 34px 56px 34px 130px;
+  gap: 80px;
+  padding: 40px 80px 40px 184px;
   background: var(--primary-main);
+  border-radius: 56px;
   filter: drop-shadow(20px 20px 20px rgba(112, 129, 136, 0.2));
   color: var(--white);
-  position: relative;
-  overflow: hidden;
-}
-
-.services__cta::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
-  pointer-events: none;
-  animation: ctaGlow 6s infinite alternate ease-in-out;
-}
-
-@keyframes ctaGlow {
-  0% { transform: scale(0.9); opacity: 0.5; }
-  100% { transform: scale(1.2); opacity: 0.9; }
 }
 
 .services__cta-title {
@@ -142,90 +201,57 @@
 .services__worth {
   font-family: 'Poppins', sans-serif;
   font-style: italic;
-  font-size: 15px;
+  font-size: 16px;
   line-height: normal;
-  text-decoration: line-through;
   white-space: nowrap;
+  opacity: 0.8;
 }
 
-/* Tablet & Mobile Media Queries */
 @media (max-width: 1100px) {
   .headline h2 {
-    font-size: 38px;
+    font-size: 40px;
     white-space: normal;
     text-align: center;
   }
-  .service-row,
-  .services__cta {
-    padding: 36px 28px;
-    gap: 24px;
+  .service-card {
+    position: relative;
+    top: auto;
   }
-  .service-row:hover {
-    padding-left: 32px;
+  .service-card__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    padding: 40px 32px;
+    border-radius: 40px;
   }
-  .service-row__content,
+  .service-card__title,
+  .services__cta-title {
+    font-size: 28px;
+  }
+  .service-card__num {
+    font-size: 48px;
+  }
+  .service-card__visual {
+    min-height: 340px;
+    border-radius: 32px;
+  }
   .services__cta {
     flex-direction: column;
-    gap: 16px;
     align-items: flex-start;
-  }
-  .service-row__title,
-  .services__cta-title {
-    font-size: 26px;
+    gap: 16px;
+    padding: 40px 32px;
+    border-radius: 40px;
   }
 }
 
-@media (max-width: 768px) {
-  .headline {
-    padding: 28px 16px;
-  }
-  .headline h2 {
-    font-size: clamp(26px, 7vw, 34px);
-    white-space: normal;
-    text-align: center;
-  }
-  .services {
-    padding: 0 16px;
-  }
-  .services__panel {
-    border-radius: 32px;
-  }
-  .service-row {
-    padding: 28px 20px;
-    gap: 16px;
-    flex-direction: column;
-  }
-  .service-row:hover {
-    padding-left: 20px;
-  }
-  .service-row__content {
-    gap: 12px;
-  }
-  .service-row__title {
-    font-size: 20px;
-  }
-  .service-row__body {
-    font-size: 14px;
-    line-height: 1.55;
-  }
-  .services__cta {
+@media (max-width: 560px) {
+  .service-card__inner {
     padding: 32px 20px;
-    gap: 20px;
-    flex-direction: column;
-    align-items: stretch;
-    text-align: center;
   }
-  .services__cta-title {
-    font-size: 22px;
+  .service-card__points {
+    grid-template-columns: 1fr;
   }
   .services__cta-actions {
     flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 12px;
-  }
-  .services__cta-actions .outline-btn {
-    width: 100%;
-    justify-content: center;
+    align-items: flex-start;
   }
 }

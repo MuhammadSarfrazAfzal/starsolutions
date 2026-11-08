@@ -1,66 +1,64 @@
-import { motion } from 'motion/react'
-import crystal from '../assets/images/crystal-approach.png'
 import arrowDownRight from '../assets/icons/arrow-down-right-dark-80.svg'
+import { STORY_LESSONS } from '../site'
+import { Photo } from './Media'
 import './About.css'
-
-const STATS = [
-  { value: '15+', label: 'Years Own Business' },
-  { value: 'USA', label: 'Physical iPhone Stores' },
-  { value: '99.9%', label: 'POS System Uptime' },
-  { value: '100+', label: 'Solutions Delivered' },
-]
 
 export default function About() {
   return (
     <section className="about" id="about">
       <div className="about__inner">
-        <div className="about__container">
-          <motion.div
-            className="about__title"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="about__title-row">
-              <h2 className="t-xl">Our</h2>
-              <img src={arrowDownRight} alt="" width={80} height={80} className="about__arrow-icon" />
-            </div>
-            <h2 className="t-xl">Story</h2>
-          </motion.div>
+        <div className="about__title" data-reveal>
+          <div className="about__title-row">
+            <h2 className="t-xl">Our</h2>
+            <img src={arrowDownRight} alt="" width={80} height={80} />
+          </div>
+          <h2 className="t-xl">Story</h2>
+        </div>
 
-          <motion.div
-            className="about__text"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <p className="t-sub1">
-              With 15 years running our own successful business, Star Solutions merges deep software engineering mastery with real-world retail ownership. Having our own physical business in the USA running multiple iPhone stores across America, we design technologies tested on the front lines of commerce.{' '}
-              <span className="about__text-strong">
-                Operating from Star Plaza, near Opera Cinema, Citi Housing, Jhelum to the United States, we specialize in delivering enterprise POS systems, cutting-edge mobile apps, modern web platforms, and high-impact digital marketing.
-              </span>
-            </p>
+        <div className="about__text">
+          <div className="about__stat" data-reveal>
+            <span className="about__stat-num">
+              <span data-counter="15">15</span>+
+            </span>
+            <span className="t-h5 about__stat-label">
+              years running our own
+              <br />
+              iPhone store business in the USA
+            </span>
+          </div>
+          <p className="t-sub1" data-reveal>
+            Before Starsolutions offered a single service, we were a retailer. For 15 years our own iPhone store
+            business has served customers across the USA: sourcing stock, listing products, running ads and looking
+            after buyers every single day.{' '}
+            <span className="about__text-strong">
+              Today our team in Jhelum brings that hands-on experience to your business.
+            </span>
+          </p>
+          <ul className="about__lessons" data-stagger>
+            {STORY_LESSONS.map((l) => (
+              <li key={l.title} data-tilt>
+                <h3 className="t-h4">{l.title}</h3>
+                <p className="t-body-m">{l.body}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-            <div className="about__stats">
-              {STATS.map((s, index) => (
-                <motion.div
-                  key={s.label}
-                  className="about__stat-item"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
-                >
-                  <span className="about__stat-value">{s.value}</span>
-                  <span className="about__stat-label">{s.label}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          <img className="about__crystal" src={crystal} alt="" width={620} height={549} aria-hidden />
+        {/* Phone-retail photo: turns in 3D as the section scrolls, circled by orbit rings */}
+        <div className="about__visual" aria-hidden>
+          <div className="about__ring" data-story-ring />
+          <div className="about__ring about__ring--inner" />
+          <div className="about__phone" data-story-phone>
+            <Photo name="story-phone" sizes="(max-width: 560px) 220px, 300px" />
+          </div>
+          <div className="about__badge about__badge--usa">
+            <b>USA</b>
+            <span>iPhone retail</span>
+          </div>
+          <div className="about__badge about__badge--pk">
+            <b>Jhelum</b>
+            <span>Starsolutions HQ</span>
+          </div>
         </div>
       </div>
     </section>

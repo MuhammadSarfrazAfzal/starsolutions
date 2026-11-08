@@ -1,31 +1,20 @@
 .about {
-  width: 100%;
   background: var(--blue-gray-900);
 }
 
 .about__inner {
-  width: 100%;
   position: relative;
-  background: var(--blue-gray-50);
-  border-radius: 0 0 44px 44px;
-  overflow: hidden;
-}
-
-.about__container {
-  width: 100%;
-  max-width: var(--page-width);
-  margin: 0 auto;
-  position: relative;
+  /* two equal columns; padding stays inside each column like Figma auto-layout */
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: start;
-  gap: 56px;
-  padding: 80px 40px;
+  gap: 80px;
+  padding: 120px;
+  background: var(--blue-gray-50);
+  border-radius: 0 0 56px 56px;
 }
 
 .about__title {
-  flex: 1 0 0;
-  min-width: 1px;
   display: flex;
   flex-direction: column;
   color: var(--blue-gray-900);
@@ -34,175 +23,255 @@
 .about__title-row {
   display: flex;
   align-items: flex-start;
-  gap: 120px;
+  gap: 204px;
 }
 
 .about__title h2 {
   white-space: nowrap;
 }
 
-.about__arrow-icon {
-  transition: transform 0.35s ease;
-  flex-shrink: 0;
-  width: 68px;
-  height: 68px;
-}
-
-.about:hover .about__arrow-icon {
-  transform: translate(6px, 6px);
-}
-
 .about__text {
-  flex: 1 0 0;
-  min-width: 1px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  padding: 70px 0 0 36px;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 120px 0 0 52px;
   color: var(--blue-gray-500);
-  z-index: 2;
-}
-
-.about__text p {
-  line-height: 1.6;
 }
 
 .about__text-strong {
   color: var(--blue-gray-900);
 }
 
-/* Interactive Stat Counters */
-.about__stats {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  width: 100%;
-}
-
-.about__stat-item {
+/* Animated 15-year counter */
+.about__stat {
   display: flex;
-  flex-direction: column;
-  padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--blue-gray-200);
-  border-radius: 18px;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  align-items: center;
+  gap: 24px;
 }
 
-.about__stat-item:hover {
-  transform: translateY(-3px);
-  border-color: var(--primary-main);
-}
-
-.about__stat-value {
+.about__stat-num {
   font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 96px;
+  line-height: 1;
   color: var(--primary-main);
-  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
 }
 
 .about__stat-label {
-  font-size: 12.5px;
-  font-weight: 600;
+  color: var(--blue-gray-900);
+}
+
+/* What the store taught us */
+.about__lessons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.about__lessons li {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 32px;
+  border-radius: 32px;
+  box-shadow: inset 0 0 0 1px var(--blue-gray-300);
+  transition: box-shadow 0.2s ease;
+}
+
+.about__lessons li:hover {
+  box-shadow: inset 0 0 0 2px var(--primary-main);
+}
+
+.about__lessons h3 {
+  color: var(--blue-gray-800);
+}
+
+.about__lessons p {
   color: var(--blue-gray-600);
-  margin-top: 4px;
 }
 
-.about__crystal {
+/* ---------- iPhone illustration ---------- */
+.about__visual {
   position: absolute;
-  left: 80px;
-  top: 120px;
+  left: 120px;
+  top: 360px;
   width: 520px;
-  height: auto;
-  max-width: none;
+  height: 560px;
+  perspective: 1200px;
   pointer-events: none;
-  animation: floatApproachCrystal 8s ease-in-out infinite;
 }
 
-@keyframes floatApproachCrystal {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-16px) rotate(-1deg);
-  }
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
+.about__ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 500px;
+  height: 500px;
+  margin: -250px 0 0 -250px;
+  border-radius: 50%;
+  border: 1px dashed var(--blue-gray-400);
 }
 
-/* Tablet view */
+.about__ring::before,
+.about__ring::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--primary-main);
+}
+
+.about__ring::before {
+  left: 36px;
+  top: 88px;
+}
+
+.about__ring::after {
+  right: 10px;
+  bottom: 170px;
+  background: var(--primary-light);
+}
+
+.about__ring--inner {
+  width: 380px;
+  height: 380px;
+  margin: -190px 0 0 -190px;
+  border: 1px solid var(--blue-gray-200);
+  background: radial-gradient(circle, rgba(74, 92, 255, 0.14), transparent 70%);
+}
+
+.about__ring--inner::before,
+.about__ring--inner::after {
+  display: none;
+}
+
+.about__phone {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 300px;
+  height: 400px;
+  margin: -200px 0 0 -150px;
+  overflow: hidden;
+  border-radius: 40px;
+  background: var(--blue-gray-200);
+  box-shadow: inset 0 0 0 1px var(--blue-gray-200), 0 40px 80px rgba(15, 23, 42, 0.3);
+  transform-style: preserve-3d;
+  transform: rotateY(-18deg) rotateX(6deg);
+}
+
+/* light brand-blue sheen so the photo matches the section's palette */
+.about__phone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(160deg, rgba(74, 92, 255, 0.16), transparent 45%);
+  box-shadow: inset 0 0 0 1px rgba(248, 250, 252, 0.4);
+  pointer-events: none;
+}
+
+.about__badge {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 20px;
+  border-radius: 24px;
+  background: var(--white);
+  box-shadow: inset 0 0 0 1px var(--blue-gray-200), 0 20px 40px rgba(15, 23, 42, 0.12);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--blue-gray-600);
+  animation: about-bob 4s ease-in-out infinite;
+}
+
+.about__badge b {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--primary-main);
+}
+
+.about__badge--usa {
+  left: 0;
+  top: 90px;
+  transform: rotate(-4deg);
+}
+
+.about__badge--pk {
+  right: 0;
+  bottom: 70px;
+  animation-delay: 1.5s;
+}
+
+@keyframes about-bob {
+  50% { translate: 0 -10px; }
+}
+
 @media (max-width: 1100px) {
-  .about__container {
+  .about__inner {
     grid-template-columns: minmax(0, 1fr);
     gap: 24px;
-    padding: 70px 24px 280px;
+    padding: 96px 24px 64px;
   }
   .about__title-row {
-    gap: 36px;
+    gap: 48px;
   }
   .about__title h2 {
-    font-size: 44px;
-    white-space: normal;
+    font-size: 48px;
   }
   .about__text {
     padding: 0;
+    gap: 24px;
   }
-  .about__crystal {
-    left: 50%;
+  .about__stat-num {
+    font-size: 72px;
+  }
+  .about__visual {
+    position: relative;
+    left: auto;
     top: auto;
-    bottom: -40px;
-    width: 360px;
-    height: auto;
-    animation: floatTabletCrystal 7s ease-in-out infinite;
+    width: 100%;
+    max-width: 520px;
+    height: 520px;
+    margin: 24px auto 0;
   }
 }
 
-@keyframes floatTabletCrystal {
-  0% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-12px); }
-  100% { transform: translateX(-50%) translateY(0); }
+@media (max-width: 560px) {
+  .about__visual {
+    height: 440px;
+  }
+  .about__ring {
+    width: 340px;
+    height: 340px;
+    margin: -170px 0 0 -170px;
+  }
+  .about__ring--inner {
+    width: 260px;
+    height: 260px;
+    margin: -130px 0 0 -130px;
+  }
+  .about__phone {
+    width: 220px;
+    height: 294px;
+    margin: -147px 0 0 -110px;
+    border-radius: 32px;
+  }
+  .about__lessons li {
+    padding: 20px 24px;
+  }
 }
 
-/* Mobile phone view */
-@media (max-width: 768px) {
-  .about__inner {
-    border-radius: 0 0 36px 36px;
-  }
-  .about__container {
-    padding: 44px 16px 260px;
-    gap: 20px;
-  }
-  .about__title-row {
-    gap: 16px;
-    align-items: center;
-  }
-  .about__title h2 {
-    font-size: clamp(28px, 8vw, 36px);
-  }
-  .about__arrow-icon {
-    width: 44px;
-    height: 44px;
-  }
-  .about__text p {
-    font-size: 15px;
-    line-height: 1.6;
-  }
-  .about__stats {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  .about__stat-item {
-    padding: 14px 16px;
-  }
-  .about__stat-value {
-    font-size: 22px;
-  }
-  .about__crystal {
-    width: 280px;
-    bottom: -30px;
+@media (prefers-reduced-motion: reduce) {
+  .about__badge {
+    animation: none;
   }
 }

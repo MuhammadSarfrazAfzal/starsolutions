@@ -1,78 +1,95 @@
-import { motion } from 'motion/react'
 import arrowDownRight from '../assets/icons/arrow-down-right-white-24.svg'
 import arrowUpRightLight from '../assets/icons/arrow-up-right-light.svg'
+import { SERVICES, whatsappLink, type ServiceId } from '../site'
+import { ArrowUpRight, CheckIcon } from './Icons'
+import { LoopVideo, Photo, type PhotoName, type VideoName } from './Media'
 import { OutlineButton } from './ui'
 import './Services.css'
 
-const SERVICES = [
-  {
-    title: 'Enterprise POS Systems',
-    body: 'Specialized Point of Sale solutions engineered for split-second checkouts, multi-store inventory synchronization, hardware integrations, and automated real-time financial reporting.',
-  },
-  {
-    title: 'Custom App Development',
-    body: 'High-performance native and cross-platform mobile apps for iOS and Android, crafted to automate operations, manage retail tasks, and create seamless customer shopping experiences.',
-  },
-  {
-    title: 'Modern Web Development',
-    body: 'Bespoke web applications, high-converting e-commerce storefronts, and cloud software systems built for enterprise reliability, blazing speed, and frictionless user flows.',
-  },
-  {
-    title: 'Marketing & Retail Solutions',
-    body: 'Comprehensive digital marketing, SEO, and foot-traffic strategies — refined and proven through 15 years running our own physical iPhone retail stores across America.',
-  },
-]
+/** Real footage or photography for each card (stock, not Starsolutions staff) */
+const MEDIA: Record<ServiceId, { video: VideoName } | { photo: PhotoName }> = {
+  calling: { video: 'service-calling' },
+  software: { video: 'service-software' },
+  ads: { photo: 'service-ads' },
+  tiktok: { photo: 'service-tiktok' },
+  ebay: { video: 'service-ebay' },
+}
+
+const MEDIA_SIZES = '(max-width: 1100px) calc(100vw - 112px), 44vw'
+
+function CardMedia({ id }: { id: ServiceId }) {
+  const media = MEDIA[id]
+  return 'video' in media ? (
+    <LoopVideo name={media.video} sizes={MEDIA_SIZES} />
+  ) : (
+    <Photo name={media.photo} sizes={MEDIA_SIZES} />
+  )
+}
 
 export default function Services() {
   return (
     <>
-      <motion.div
-        className="headline"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-40px' }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <h2 className="t-xl">
+      <div className="headline">
+        <h2 className="t-xl" data-drift>
           What we can do <span className="headline__accent">for you?</span>
         </h2>
-      </motion.div>
+      </div>
 
       <section className="services" id="services">
-        <div className="services__panel">
-          {SERVICES.map((s, index) => (
-            <motion.div
-              key={s.title}
-              className="service-row"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-20px' }}
-              transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <img src={arrowDownRight} alt="" width={24} height={24} className="service-row__icon" />
-              <div className="service-row__content">
-                <h3 className="t-h2 service-row__title">{s.title}</h3>
-                <p className="t-body-l service-row__body">{s.body}</p>
+        {/* On wide screens each card sticks under the header and the next one slides over it */}
+        <div className="services__stack" data-service-stack>
+          {SERVICES.map((s, i) => (
+            <article key={s.id} id={`service-${s.id}`} className="service-card" style={{ '--i': i } as React.CSSProperties}>
+              <div className="service-card__inner" data-card-inner>
+                <div className="service-card__text">
+                  <div className="service-card__top">
+                    <img src={arrowDownRight} alt="" width={24} height={24} className="service-card__icon" />
+                    <span className="service-card__num">0{i + 1}</span>
+                  </div>
+                  <h3 className="t-h2 service-card__title">{s.title}</h3>
+                  <p className="t-h5 service-card__tagline">{s.tagline}</p>
+                  <p className="t-body-m service-card__body">{s.body}</p>
+                  <ul className="service-card__points">
+                    {s.points.map((p) => (
+                      <li key={p} className="t-body-m">
+                        <CheckIcon size={18} />
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    className="t-btn-m service-card__cta"
+                    href={whatsappLink(`Hi Starsolutions! I'd like to discuss ${s.title}.`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Discuss {s.title}
+                    <ArrowUpRight size={18} />
+                  </a>
+                </div>
+                <div className="service-card__visual" aria-hidden>
+                  <div data-card-visual>
+                    <CardMedia id={s.id} />
+                  </div>
+                </div>
               </div>
-            </motion.div>
+            </article>
           ))}
+        </div>
 
-          <motion.div
-            className="services__cta"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-30px' }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <p className="t-h2 services__cta-title">Free consultation</p>
-            <div className="services__cta-actions">
-              <OutlineButton href="https://wa.me/923342221063" tone="light" icon={arrowUpRightLight}>
-                Schedule a free call
-              </OutlineButton>
-              <span className="services__worth">worth 200 USD</span>
-            </div>
-          </motion.div>
+        <div className="services__cta" data-reveal>
+          <p className="t-h2 services__cta-title">Free consultation</p>
+          <div className="services__cta-actions">
+            <OutlineButton
+              href={whatsappLink('Hi Starsolutions! I would like to book a free consultation.')}
+              tone="light"
+              icon={arrowUpRightLight}
+              external
+            >
+              Chat on WhatsApp
+            </OutlineButton>
+            <span className="services__worth">no obligation</span>
+          </div>
         </div>
       </section>
     </>

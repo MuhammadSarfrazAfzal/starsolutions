@@ -1,0 +1,165 @@
+.process {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 40px 120px 160px;
+  background: var(--blue-gray-900);
+  color: var(--white);
+}
+
+.process__backdrop {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: -1;
+  height: 720px;
+  opacity: 0.35;
+  /* fade the photo in from the section edge and out again toward the steps */
+  mask-image: linear-gradient(180deg, transparent, #000 20%, rgba(0, 0, 0, 0.9) 45%, transparent 92%);
+}
+
+.process__backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 25, 255, 0.35), rgba(15, 23, 42, 0.6));
+  mix-blend-mode: multiply;
+}
+
+.process__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.process__eyebrow {
+  color: var(--primary-light);
+}
+
+.process__solid {
+  color: var(--blue-gray-300);
+}
+
+.process__track {
+  position: relative;
+}
+
+.process__line {
+  position: absolute;
+  left: 12.5%;
+  right: 12.5%;
+  top: 36px;
+  height: 2px;
+  background: var(--blue-gray-800);
+}
+
+.process__progress {
+  width: 100%;
+  height: 100%;
+  background: var(--primary-light);
+  transform-origin: left;
+}
+
+.process__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.process__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.process__dot {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  background: var(--blue-gray-900);
+  box-shadow: inset 0 0 0 1px var(--blue-gray-500), 0 0 0 8px var(--blue-gray-900);
+  font-family: var(--font-display);
+  font-size: 24px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.process__step:hover .process__dot {
+  background: var(--primary-main);
+  box-shadow: inset 0 0 0 1px var(--primary-main), 0 0 0 8px var(--blue-gray-900);
+  transform: scale(1.08);
+}
+
+.process__step:last-child .process__dot {
+  background: var(--primary-main);
+  box-shadow: none;
+}
+
+.process__step p {
+  max-width: 280px;
+  color: var(--blue-gray-300);
+}
+
+@media (max-width: 1100px) {
+  .process {
+    padding: 24px 24px 120px;
+    gap: 56px;
+  }
+  .process__backdrop {
+    height: 480px;
+  }
+  .process__title {
+    font-size: 40px;
+  }
+  .process__line {
+    left: 35px;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    height: auto;
+  }
+  .process__progress {
+    transform-origin: top;
+  }
+  .process__steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+  .process__step {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    column-gap: 24px;
+    row-gap: 8px;
+    align-items: start;
+    text-align: left;
+  }
+  .process__dot {
+    grid-row: span 2;
+    margin: 0;
+  }
+  .process__step h3 {
+    padding-top: 20px;
+  }
+  .process__step p {
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .process__title {
+    font-size: 30px;
+  }
+}

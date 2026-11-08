@@ -1,41 +1,40 @@
-import { useEffect } from 'react'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import Home from './pages/Home'
-import ServicesPage from './pages/ServicesPage'
-import AboutPage from './pages/AboutPage'
-import ContactPage from './pages/ContactPage'
-import { ScrollProgressBar } from './components/InteractiveWidgets'
-import { ThreeBackground } from './components/ThreeBackground'
-import { CursorGlow } from './components/CursorGlow'
-import { ClickRipple } from './components/ClickRipple'
-
-function ScrollToTop() {
-  const { pathname } = useLocation()
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-  }, [pathname])
-
-  return null
-}
+import { useRef } from 'react'
+import Header from './components/Header'
+import Hero from './components/Hero'
+import Marquee from './components/Marquee'
+import Problems from './components/Problems'
+import Services from './components/Services'
+import Gallery from './components/Gallery'
+import About from './components/About'
+import WorkingWithUs from './components/WorkingWithUs'
+import Process from './components/Process'
+import Faq from './components/Faq'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
+import WhatsAppButton from './components/WhatsAppButton'
+import { useScrollMotion } from './hooks/useScrollMotion'
 
 export default function App() {
+  const page = useRef<HTMLDivElement>(null)
+  useScrollMotion(page)
+
   return (
-    <BrowserRouter>
-      <div className="page">
-        <ScrollToTop />
-        <ThreeBackground />
-        <CursorGlow />
-        <ClickRipple />
-        <ScrollProgressBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <div className="page" ref={page}>
+      <Header />
+      <Hero />
+      <main>
+        <Marquee />
+        <Problems />
+        <Services />
+        <Gallery />
+        <About />
+        <WorkingWithUs />
+        <Process />
+        <Faq />
+        <Contact />
+      </main>
+      <Footer />
+      <WhatsAppButton />
+    </div>
   )
 }

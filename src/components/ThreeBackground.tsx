@@ -330,3 +330,4 @@ export function ThreeBackground() {
 
   return <div ref={containerRef} className="three-background" aria-hidden="true" />
 }
+
